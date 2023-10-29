@@ -2,12 +2,11 @@ class AddListings < ActiveRecord::Migration
   def up
     create_table :listings do |t|
       t.string :name
-      t.string :available_space
-      t.text :price
+      t.float :available_space
+      t.float :price
       t.date :start_date
       t.date :end_date
       t.float :campus_dist
-      t.string :category
       t.float :rating
 
       # Add fields that let Rails automatically keep track
