@@ -2,7 +2,7 @@
 <h2>All Available Listings on BOXT</h2>
 
 
-<table class="table table-striped col-md-12" id="movies">
+<table class="table table-striped col-md-12" id="storages">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,5 +14,32 @@
       <th>Rating</th>
     </tr>
   </thead>
+  <tbody>
+    <% @storages.each do |storage| %>
+      <tr>
+        <td>
+          <%= storage.name %>
+        </td>
+        <td>
+          <%= storage.available_space %>
+        </td>
+        <td>
+          <%= storage.price %>
+        </td>
+        <td>
+          <%= storage.start_date %>
+        </td>
+        <td>
+          <%= storage.end_date %>
+        </td>
+        <td>
+          <%= storage.campus_dist %>
+        </td>
+        <td>
+          <%= storage.rating %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 
 </table>
