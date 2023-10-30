@@ -1,0 +1,104 @@
+When("I visit the home page") do
+  visit root_path 
+end
+
+Given("the following storage listings exist:") do |table|
+  table.hashes.each do |storage_params|
+    Storage.create!(storage_params)
+  end
+end
+
+Then("I should see all storage listings") do
+  expect(page).to have_css('#storages') 
+end
+
+When("I click on the {string} link") do |column_name|
+  click_link(column_name)
+end
+
+Then("I should see storage listings sorted by name in ascending order") do
+  rows = all('#storages tbody tr')
+  names = rows.map { |row| row.find('td', text: /\S/).text }
+  expect(names).to eq(names.sort)
+end
+
+When("I click on the {string} link again") do |column_name|
+  click_link(column_name)
+  @ascending_order = !@ascending_order
+end
+
+Then("I should see storage listings sorted by name in descending order") do
+  rows = all('#storages tbody tr')
+  names = rows.map { |row| row.find('td', text: /\S/).text }
+
+  if @ascending_order
+    names.reverse!
+  end
+
+  expect(names).to eq(names.sort.reverse)
+end
+
+Then("I should see storage listings sorted by available space in ascending order") do
+  rows = all('#storages tbody tr')
+  available_space_values = rows.map { |row| row.find('td', text: /\S/).text.to_f }
+
+  if @ascending_order
+    available_space_values.reverse!
+  end 
+
+  expect(available_space_values).to eq(available_space_values.sort)
+end
+
+Then("I should see storage listings sorted by available space in descending order") do
+  rows = all('#storages tbody tr')
+  available_space_values = rows.map { |row| row.find('td', text: /\S/).text.to_f }
+
+  if @ascending_order
+    available_space_values.reverse!
+  end
+
+  expect(available_space_values).to eq(available_space_values.sort.reverse)
+end
+
+Then("I should see storage listings sorted by price per sq. ft. in ascending order") do
+  rows = all('#storages tbody tr')
+  price_per_sqft_values = rows.map { |row| row.find('td', text: /\S/).text.to_f }
+
+  if @ascending_order
+    price_per_sqft_values.reverse!
+  end
+
+  expect(price_per_sqft_values).to eq(price_per_sqft_values.sort)
+end
+
+Then("I should see storage listings sorted by price per sq. ft. in descending order") do
+  rows = all('#storages tbody tr')
+  price_per_sqft_values = rows.map { |row| row.find('td', text: /\S/).text.to_f }
+
+  if @ascending_order
+    price_per_sqft_values.reverse!
+  end
+
+  expect(price_per_sqft_values).to eq(price_per_sqft_values.sort.reverse)
+end
+
+When("I apply the following filters:") do |table|
+  filter_criteria = table.hashes
+
+  filter_criteria.each do |criteria|
+    case criteria['Filter']
+    when 'Minimum Available Space (in Sq. ft.)'
+      fill_in 'min_available_space', with: criteria['Value']
+    when 'Maximum Price per Sq. ft. (in $)'
+      fill_in 'max_price_per_sqft', with: criteria['Value']
+    when 'Maximum Distance from Campus (in Miles)'
+      fill_in 'max_distance_from_campus', with: criteria['Value']
+    end
+  end
+
+  click_button 'Apply Filters' 
+end
+
+Then("I should see {string}") do |content|
+  expect(page).to have_content(content)
+end
