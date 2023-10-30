@@ -65,20 +65,21 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        </table>
           <% @storages.each do |storage| %>
-            <tr>
-              <td><%= storage.name %></td>
-              <td><%= storage.available_space %></td>
-              <td><%= storage.price %></td>
-              <td><%= storage.start_date %></td>
-              <td><%= storage.end_date %></td>
-              <td><%= storage.campus_dist %></td>
-              <td><%= storage.rating %></td>
-            </tr>
+          <div class="row">
+            <div>
+              <%= image_tag "default_icon.png", height: 175 %>
+            </div>
+            <div>
+              <h4><%= storage.name %></h4>
+              <h6><b>Available Space: </b><%= storage.available_space %> Sq. Ft. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Price: </b><%= storage.price %> per Sq. Ft.</h6>
+              <h6 style={white-space: pre;}><b>Availability: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start: <%= storage.start_date %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End: <%= storage.end_date %></h6>
+              <h6><b>Distance from Campus: </b><%= storage.campus_dist %> Miles</h6>
+              <h6><b>Rating: </b><%= storage.rating %></h6>
+            </div>
+          </div>
           <% end %>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
