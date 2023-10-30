@@ -82,6 +82,62 @@ Then("I should see storage listings sorted by price per sq. ft. in descending or
   expect(price_per_sqft_values).to eq(price_per_sqft_values.sort.reverse)
 end
 
+Then("I should see storage listings sorted by Availability Start Date in ascending order") do
+  rows = all('#storages tbody tr')
+  start_dates = rows.map { |row| Date.parse(row.find('td', text: /\d{2}-\w{3}-\d{4}/).text) }
+
+  expect(start_dates).to eq(start_dates.sort)
+end
+
+Then("I should see storage listings sorted by Availability Start Date in descending order") do
+  rows = all('#storages tbody tr')
+  start_dates = rows.map { |row| Date.parse(row.find('td', text: /\d{2}-\w{3}-\d{4}/).text) }
+
+  expect(start_dates).to eq(start_dates.sort.reverse)
+end
+
+Then("I should see storage listings sorted by Availability End Date in ascending order") do
+  rows = all('#storages tbody tr')
+  end_dates = rows.map { |row| Date.parse(row.find('td', text: /\d{2}-\w{3}-\d{4}/).text) }
+
+  expect(end_dates).to eq(end_dates.sort)
+end
+
+Then("I should see storage listings sorted by Availability End Date in descending order") do
+  rows = all('#storages tbody tr')
+  end_dates = rows.map { |row| Date.parse(row.find('td', text: /\d{2}-\w{3}-\d{4}/).text) }
+
+  expect(end_dates).to eq(end_dates.sort.reverse)
+end
+
+Then("I should see storage listings sorted by Distance from Campus in ascending order") do
+  rows = all('#storages tbody tr')
+  campus_distances = rows.map { |row| row.find('td', text: /\d+\.\d+/).text.to_f }
+
+  expect(campus_distances).to eq(campus_distances.sort)
+end
+
+Then("I should see storage listings sorted by Distance from Campus in descending order") do
+  rows = all('#storages tbody tr')
+  campus_distances = rows.map { |row| row.find('td', text: /\d+\.\d+/).text.to_f }
+
+  expect(campus_distances).to eq(campus_distances.sort.reverse)
+end
+
+Then("I should see storage listings sorted by Rating in ascending order") do
+  rows = all('#storages tbody tr')
+  ratings = rows.map { |row| row.find('td', text: /\d+\.\d+/).text.to_f }
+
+  expect(ratings).to eq(ratings.sort)
+end
+
+Then("I should see storage listings sorted by Rating in descending order") do
+  rows = all('#storages tbody tr')
+  ratings = rows.map { |row| row.find('td', text: /\d+\.\d+/).text.to_f }
+
+  expect(ratings).to eq(ratings.sort.reverse)
+end
+
 When("I apply the following filters:") do |table|
   filter_criteria = table.hashes
 
