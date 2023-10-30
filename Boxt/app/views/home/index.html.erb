@@ -1,18 +1,87 @@
 <!--  This file is app/views/home/index.html.erb -->
-<h2>All Available Listings on BOXT</h2>
+<div class="container">
+  <div class="row">
+    <!-- Filter Section -->
+    <div class="col-md-3">
+      <div class="filter-section">
+        <%= form_tag(root_path, method: :get, class: 'filter-form') do %>
+          <%= hidden_field_tag :sort_by, params[:sort_by] %>
+          <%= hidden_field_tag :sort_direction, params[:sort_direction] %>
 
+          <div class="form-group">
+            <%= label_tag 'Minimum Available Space (in Sq. ft.)' %>
+            <%= text_field_tag :min_available_space, params[:min_available_space], class: 'form-control', placeholder: 'Min Available Space' %>
+          </div>
 
-<table class="table table-striped col-md-12" id="movies">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Available Space</th>
-      <th>Price per Sq. ft.</th>
-      <th>Availability Dates</th>
-      <th>Distance from Campus</th>
-      <th>Category</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
+          <div class="form-group">
+            <%= label_tag 'Maximum Price per Sq. ft. (in $)' %>
+            <%= text_field_tag :max_price_per_sqft, params[:max_price_per_sqft], class: 'form-control', placeholder: 'Max Price per Sq. ft.' %>
+          </div>
 
-</table>
+          <div class="form-group">
+            <%= label_tag 'Maximum Distance from Campus (in Miles)' %>
+            <%= text_field_tag :max_distance_from_campus, params[:max_distance_from_campus], class: 'form-control', placeholder: 'Max Distance from Campus' %>
+          </div>
+
+          <%= submit_tag 'Apply Filters', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+    
+    <!-- Data Table -->
+    <div class="col-md-9">
+      <h2>All Available Listings on BOXT</h2>
+
+      <table class="table table-striped" id="storages">
+        <thead>
+          <tr>
+            <th>
+              <%= link_to 'Name', root_path(sort_by: 'name', sort_direction: (params[:sort_by] == 'name' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'name' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Available Space (in Sq. ft.)', root_path(sort_by: 'available_space', sort_direction: (params[:sort_by] == 'available_space' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'available_space' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Price per Sq. ft. (in $)', root_path(sort_by: 'price', sort_direction: (params[:sort_by] == 'price' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'price' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Availability Start Date', root_path(sort_by: 'start_date', sort_direction: (params[:sort_by] == 'start_date' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'start_date' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Availability End Date', root_path(sort_by: 'end_date', sort_direction: (params[:sort_by] == 'end_date' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'end_date' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Distance from Campus (in Miles)', root_path(sort_by: 'campus_dist', sort_direction: (params[:sort_by] == 'campus_dist' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'campus_dist' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+            <th>
+              <%= link_to 'Rating', root_path(sort_by: 'rating', sort_direction: (params[:sort_by] == 'rating' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
+              <%= params[:sort_by] == 'rating' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @storages.each do |storage| %>
+            <tr>
+              <td><%= storage.name %></td>
+              <td><%= storage.available_space %></td>
+              <td><%= storage.price %></td>
+              <td><%= storage.start_date %></td>
+              <td><%= storage.end_date %></td>
+              <td><%= storage.campus_dist %></td>
+              <td><%= storage.rating %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <%= link_to 'Add new storage', home_new_path, :class => 'btn btn-primary' %>
+
+</div>
