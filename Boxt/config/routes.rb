@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   #get 'home/index'
+  #resources :home
   root 'home#index'
+  get 'home/new', to: 'home#new', as: 'home_new'
+  post 'home/new', to: 'home#create'
+ # POST	/photos	photos#create
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -31,6 +31,17 @@ class HomeController < ApplicationController
     end
   end
 
+  def create
+    @storage = Storage.create!(storage_params)
+    flash[:notice] = "#{@storage.name} was successfully created."
+    redirect_to '/'
+  end
+
+  def new
+    # default: render 'new' template
+  end
+
+
   private
 
   def sort_storages(storages, sort_by, sort_direction)
@@ -52,5 +63,9 @@ class HomeController < ApplicationController
     end
 
     storages
+  end
+
+  def storage_params
+    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date)
   end
 end
