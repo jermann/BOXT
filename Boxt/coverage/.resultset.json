@@ -1,42 +1,42 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/codio/workspace/BOXT/Boxt/app/models/storage.rb": {
+      "/Users/alexander/git/BOXT/Boxt/app/models/storage.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/codio/workspace/BOXT/Boxt/app/controllers/home_controller.rb": {
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
-          44,
+          47,
           null,
           null,
-          44,
-          44,
+          47,
+          47,
           null,
           null,
-          44,
+          47,
           null,
           null,
-          44,
-          44,
-          44,
+          47,
+          47,
+          47,
           null,
           null,
-          44,
+          47,
           0,
           0,
           null,
           null,
-          44,
+          47,
           0,
           0,
           null,
           null,
-          44,
+          47,
           0,
           0,
           null,
@@ -56,11 +56,9 @@
           1,
           null,
           1,
-          44,
+          47,
           null,
-          22,
-          null,
-          3,
+          24,
           null,
           3,
           null,
@@ -72,8 +70,10 @@
           null,
           3,
           null,
+          3,
           null,
-          44,
+          null,
+          47,
           null,
           null,
           1,
@@ -82,7 +82,7 @@
           null
         ]
       },
-      "/home/codio/workspace/BOXT/Boxt/app/controllers/application_controller.rb": {
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -91,19 +91,19 @@
           null
         ]
       },
-      "/home/codio/workspace/BOXT/Boxt/app/helpers/application_helper.rb": {
+      "/Users/alexander/git/BOXT/Boxt/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/codio/workspace/BOXT/Boxt/app/helpers/home_helper.rb": {
+      "/Users/alexander/git/BOXT/Boxt/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       }
     },
-    "timestamp": 1698799285
+    "timestamp": 1698808760
   }
 }

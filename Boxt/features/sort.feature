@@ -10,68 +10,68 @@ Feature: Home Page Display and Sort Storage Listings
 
   Scenario: Sort storage listings by name in ascending order
     When I visit the home page
-    And I click on the "Name" link
+    And I click on the "Address" link
     Then I should see storage listings sorted by name in ascending order
 
   Scenario: Sort storage listings by name in descending order
     When I visit the home page
-    And I click on the "Name" link
-    And I click on the "Name" link again
+    And I click on the "Address" link
+    And I click on the "Address" link again
     Then I should see storage listings sorted by name in descending order
 
   Scenario: Sort storage listings by available space in ascending order
     When I visit the home page
-    And I click on the "Available Space (in Sq. ft.)" link
+    And I click on the "Space (Sq ft)" link
     Then I should see storage listings sorted by available space in ascending order
 
   Scenario: Sort storage listings by available space in descending order
     When I visit the home page
-    And I click on the "Available Space (in Sq. ft.)" link
-    And I click on the "Available Space (in Sq. ft.)" link again
+    And I click on the "Space (Sq ft)" link
+    And I click on the "Space (Sq ft)" link again
     Then I should see storage listings sorted by available space in descending order
 
   Scenario: Sort storage listings by price per sq. ft. in ascending order
     When I visit the home page
-    And I click on the "Price per Sq. ft. (in $)" link
+    And I click on the "Price per Sq ft" link
     Then I should see storage listings sorted by price per sq. ft. in ascending order
 
   Scenario: Sort storage listings by price per sq. ft. in descending order
     When I visit the home page
-    And I click on the "Price per Sq. ft. (in $)" link
-    And I click on the "Price per Sq. ft. (in $)" link again
+    And I click on the "Price per Sq ft" link
+    And I click on the "Price per Sq ft" link again
     Then I should see storage listings sorted by price per sq. ft. in descending order
 
 Scenario: Sort storage listings by Availability Start Date in ascending order
   When I visit the home page
-  And I click on the "Availability Start Date" link
+  And I click on the "Start Date" link
   Then I should see storage listings sorted by Availability Start Date in ascending order
 
 Scenario: Sort storage listings by Availability Start Date in descending order
   When I visit the home page
-  And I click on the "Availability Start Date" link
-  And I click on the "Availability Start Date" link again
+  And I click on the "Start Date" link
+  And I click on the "Start Date" link again
   Then I should see storage listings sorted by Availability Start Date in descending order
 
 Scenario: Sort storage listings by Availability End Date in ascending order
   When I visit the home page
-  And I click on the "Availability End Date" link
+  And I click on the "End Date" link
   Then I should see storage listings sorted by Availability End Date in ascending order
 
 Scenario: Sort storage listings by Availability End Date in descending order
   When I visit the home page
-  And I click on the "Availability End Date" link
-  And I click on the "Availability End Date" link again
+  And I click on the "End Date" link
+  And I click on the "End Date" link again
   Then I should see storage listings sorted by Availability End Date in descending order
 
 Scenario: Sort storage listings by Distance from Campus in ascending order
   When I visit the home page
-  And I click on the "Distance from Campus" link
+  And I click on the "Distance to Campus (Miles)" link
   Then I should see storage listings sorted by Distance from Campus in ascending order
 
 Scenario: Sort storage listings by Distance from Campus in descending order
   When I visit the home page
-  And I click on the "Distance from Campus" link
-  And I click on the "Distance from Campus" link again
+  And I click on the "Distance to Campus (Miles)" link
+  And I click on the "Distance to Campus (Miles)" link again
   Then I should see storage listings sorted by Distance from Campus in descending order
 
 Scenario: Sort storage listings by Rating in ascending order
