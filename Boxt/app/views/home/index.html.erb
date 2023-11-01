@@ -25,12 +25,13 @@
 
           <%= submit_tag 'Apply Filters', class: 'btn btn-primary btn-block' %>
         <% end %>
+        <%= button_to 'Clear Filters', root_path, method: :get, params: { min_available_space: nil, max_price_per_sqft: nil,  max_distance_from_campus: nil}, class: 'btn btn-secondary btn-block' %>
       </div>
     </div>
     
     <!-- Data Table -->
     <div class="col-md-9">
-      <h2>All Available Listings on BOXT</h2>
+      <h2>All Available Listings</h2>
 
       <table class="table table-striped" id="storages">
         <thead>
