@@ -1,0 +1,109 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/home/codio/workspace/BOXT/Boxt/app/models/storage.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/BOXT/Boxt/app/controllers/home_controller.rb": {
+        "lines": [
+          1,
+          1,
+          44,
+          null,
+          null,
+          44,
+          44,
+          null,
+          null,
+          44,
+          null,
+          null,
+          44,
+          44,
+          44,
+          null,
+          null,
+          44,
+          0,
+          0,
+          null,
+          null,
+          44,
+          0,
+          0,
+          null,
+          null,
+          44,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          44,
+          null,
+          22,
+          null,
+          3,
+          null,
+          3,
+          null,
+          3,
+          null,
+          3,
+          null,
+          3,
+          null,
+          3,
+          null,
+          null,
+          44,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/codio/workspace/BOXT/Boxt/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/BOXT/Boxt/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/codio/workspace/BOXT/Boxt/app/helpers/home_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1698799285
+  }
+}
