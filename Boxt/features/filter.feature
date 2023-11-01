@@ -45,3 +45,10 @@ Feature: Filter storage listings by criteria
       | Min Available Space | Max Price per Sq. ft. | Max Distance from Campus |
       | 150                 | 70                   | 3                       |
     Then I should see "Storage B"
+
+  Scenario: clearing all filters
+    Given I apply the following filters:
+      | Min Available Space | Max Price per Sq. ft. | Max Distance from Campus |
+      | 150                 | 70                   | 3                       |
+    And I press 'Clear All'
+    Then I should see all storage listings
