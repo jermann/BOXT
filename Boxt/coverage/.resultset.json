@@ -1,51 +1,45 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/alexander/git/BOXT/Boxt/app/models/storage.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/Users/alexander/git/BOXT/Boxt/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
-          47,
+          49,
           null,
           null,
-          47,
-          47,
+          49,
+          49,
           null,
           null,
-          47,
+          49,
           null,
           null,
-          47,
-          47,
-          47,
+          49,
+          49,
+          49,
           null,
           null,
-          47,
+          49,
           0,
           0,
           null,
           null,
-          47,
+          49,
           0,
           0,
           null,
           null,
-          47,
+          49,
           0,
           0,
           null,
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -56,11 +50,9 @@
           1,
           null,
           1,
-          47,
+          49,
           null,
-          24,
-          null,
-          3,
+          26,
           null,
           3,
           null,
@@ -72,12 +64,14 @@
           null,
           3,
           null,
+          3,
           null,
-          47,
+          null,
+          49,
           null,
           null,
           1,
-          0,
+          1,
           null,
           null
         ]
@@ -102,8 +96,159 @@
           1,
           null
         ]
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/models/storage.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/storages_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1698808760
+    "timestamp": 1698850894
+  },
+  "RSpec": {
+    "coverage": {
+      "/Users/alexander/git/BOXT/Boxt/app/models/storage.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/storages_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/helpers/home_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/alexander/git/BOXT/Boxt/app/helpers/application_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1698848828
   }
 }

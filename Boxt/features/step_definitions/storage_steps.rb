@@ -162,3 +162,25 @@ end
 Given("I press {string}") do |string|
   click_button string
 end
+
+# AJ: The below parts are adapted from web_steps - maybe we can import instead of pasting?
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
+end
+
+When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
+When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
+  fill_in(field, :with => value)
+end
+
+Then /^(?:|I )should be on the home page$/ do
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == root_path
+  else
+    assert_equal root_path, current_path
+  end
+end
