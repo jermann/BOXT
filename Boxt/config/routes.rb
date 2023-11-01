@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   #get 'home/index'
   #resources :home
+  resources :storages
   root 'home#index'
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'
 
-  resources :storages
+
  # POST	/photos	photos#create
 
   # The priority is based upon order of creation: first created -> highest priority.
