@@ -1,4 +1,30 @@
 class HomeController < ApplicationController
+
+  def show
+    puts "in show"
+    id = params[:id] # retrieve movie ID from URI route
+    @storage = Storage.find(id) # look up movie by unique ID
+    # will render app/views/movies/show.<extension> by default
+  end
+
+  def destroy
+    @storage = Storage.find(params[:id])
+    @storage.destroy
+    flash[:notice] = "Storage '#{@storage.name}' booked."
+    
+    redirect_to '/'
+  end
+
+  def create
+    @storage = Storage.create!(storage_params)
+    flash[:notice] = "#{@storage.name} was successfully created."
+    redirect_to '/'
+  end
+
+  def new
+    # default: render 'new' template
+  end
+
   def index
     @storages = Storage.all
 
@@ -30,17 +56,6 @@ class HomeController < ApplicationController
       @storages = @storages.where('campus_dist <= ?', max_distance_from_campus)
     end
   end
-
-  def create
-    @storage = Storage.create!(storage_params)
-    flash[:notice] = "#{@storage.name} was successfully created."
-    redirect_to '/'
-  end
-
-  def new
-    # default: render 'new' template
-  end
-
 
   private
 

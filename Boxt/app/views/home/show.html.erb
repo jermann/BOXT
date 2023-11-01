@@ -1,1 +1,42 @@
 <h2>Details about <em><%= @storage.name %></em></h2>
+
+<ul id="details">
+  <li>
+    Name:
+    <%= @storage.name %>
+  </li>
+  <li>
+   Available Space (in Sq. ft.):
+   <%= @storage.available_space %>
+  </li>
+  <li>
+    Price per Sq. ft. (in $):
+    <%= @storage.price%>
+  </li>
+  <li>
+   Distance from Campus:
+    <%= @storage.campus_dist%>
+  </li>
+   <li>
+   Rating:
+    <%= @storage.rating%>
+  </li>
+   <li>
+    Availability Start Date:
+    <%= @storage.start_date.strftime("%B %d, %Y") %>
+  </li>
+   <li>
+    Availability End Date:
+    <%= @storage.end_date.strftime("%B %d, %Y") %>
+  </li>
+</ul>
+
+
+
+<div>
+
+  <%= link_to 'Book Now', home_path(@storage), 'data-method' => 'delete', 'data-confirm' => 'Confirm Booking', :class => 'btn btn-danger col-2' %>   <br/>
+  <br/>
+  <%= link_to 'Back home', '/', :class => 'btn btn-primary col-2' %>   <br/>
+</div>
+

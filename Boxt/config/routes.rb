@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   #get 'home/index'
-  #resources :home
+  resources :home
   resources :storages
   root 'home#index'
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'
+  
+  get 'home/show/:id', to: 'home#show', as: 'home_show'
 
 
  # POST	/photos	photos#create

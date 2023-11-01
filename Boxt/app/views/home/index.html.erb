@@ -45,7 +45,7 @@
               <%= image_tag "default_icon.png", height: 175 %>
             </div>
             <div>
-              <h4 style="margin-top: 10px"><%= link_to "#{storage.name}", storage_path(storage) %></h4>
+              <h4 style="margin-top: 10px"><%= link_to "#{storage.name}", home_show_path(storage) %></h4>
               <h6><b>Available Space: </b><%= storage.available_space %> Sq Ft &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Price: $</b><%= storage.price %> / Sq. Ft.</h6>
               <h6 style={white-space:pre;}><b>Availability: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start: <%= storage.start_date %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End: <%= storage.end_date %></h6>
               <h6><b>Distance from Campus: </b><%= storage.campus_dist %> Miles</h6>
