@@ -139,23 +139,20 @@
   },
   "Cucumber Features": {
     "coverage": {
+      "/home/codio/workspace/BOXT/Boxt/app/models/storage.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/home/codio/workspace/BOXT/Boxt/app/controllers/home_controller.rb": {
         "lines": [
           1,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
           1,
-          0,
-          0,
-          0,
+          1,
           null,
-          0,
           null,
           null,
           1,
@@ -163,38 +160,46 @@
           1,
           1,
           null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
           null,
           1,
           null,
           null,
           null,
           1,
-          44,
+          46,
           null,
           null,
-          44,
-          44,
+          46,
+          46,
           null,
           null,
-          44,
+          46,
           null,
           null,
-          44,
-          44,
-          44,
+          46,
+          46,
+          46,
           null,
           null,
-          44,
+          46,
           1,
           1,
           null,
           null,
-          44,
+          46,
           1,
           1,
           null,
           null,
-          44,
+          46,
           1,
           1,
           null,
@@ -203,9 +208,9 @@
           1,
           null,
           1,
-          44,
+          46,
           null,
-          23,
+          25,
           null,
           3,
           null,
@@ -220,7 +225,7 @@
           3,
           null,
           null,
-          44,
+          46,
           null,
           null,
           1,
@@ -250,12 +255,6 @@
           null
         ]
       },
-      "/home/codio/workspace/BOXT/Boxt/app/models/storage.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/home/codio/workspace/BOXT/Boxt/app/controllers/storages_controller.rb": {
         "lines": [
           0,
@@ -273,6 +272,6 @@
         }
       }
     },
-    "timestamp": 1698865635
+    "timestamp": 1698869046
   }
 }
