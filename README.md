@@ -1,6 +1,11 @@
 # BOXT
 *Storage by Students for Students, enjoy your Summer worry free*
 
+### Team Members
+Tarang Donga (tkd2113)
+Alexander Jermann (apj2125)
+Madhulika Balakumar (mb5144)
+Gargi Patil (gp2723)
 
 ### About
 This repo is the realization of our Software-as-a-Service class project to implement a startup idea. 
