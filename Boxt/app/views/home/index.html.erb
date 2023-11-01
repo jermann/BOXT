@@ -1,8 +1,9 @@
 <!--  This file is app/views/home/index.html.erb -->
 <div class="container">
-  <div class="row">
+  <h1 style="margin-bottom: 50px;">All Available Listings on BOXT</h1>
+  <div style="display:flex; justify-content:space-between; width:100%">
     <!-- Filter Section -->
-    <div class="col-md-3">
+    <div style="width:22%">
       <div class="filter-section">
         <%= form_tag(root_path, method: :get, class: 'filter-form') do %>
           <%= hidden_field_tag :sort_by, params[:sort_by] %>
@@ -24,64 +25,72 @@
           </div>
 
           <%= submit_tag 'Apply Filters', class: 'btn btn-primary btn-block' %>
+          <div style="margin-top:20%"></div>
+          <%= link_to 'Add new storage', home_new_path, :class => 'btn btn-primary' %>
         <% end %>
       </div>
     </div>
     
     <!-- Data Table -->
-    <div class="col-md-9">
-      <h2>All Available Listings on BOXT</h2>
+    <div style="width:60%; margin-left:25px; margin-right:50px;">
+      
+      <div>
+      
+        </div>
+          <% @storages.each do |storage| %>
+          <div style="display:flex; flex-direction:row; margin-bottom: 15px; background-color:rgba(255, 156, 89, 0.2); border-radius:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2)">
+            <div>
+              <%= image_tag "default_icon.png", height: 175 %>
+            </div>
+            <div>
+              <h4><%= storage.name %></h4>
+              <h6><b>Available Space: </b><%= storage.available_space %> Sq. Ft. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Price: </b><%= storage.price %> per Sq. Ft.</h6>
+              <h6 style={white-space: pre;}><b>Availability: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start: <%= storage.start_date %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End: <%= storage.end_date %></h6>
+              <h6><b>Distance from Campus: </b><%= storage.campus_dist %> Miles</h6>
+              <h6><b>Rating: </b><%= storage.rating %></h6>
+            </div>
+          </div>
+          <% end %>
+    </div>
 
+    <!-- Sorting Options -->
+    <div style="width:18%;">
+    <h5>Sort Listings by:</h5>
       <table class="table table-striped" id="storages">
         <thead>
-          <tr>
-            <th>
+            <tr><th>
               <%= link_to 'Name', root_path(sort_by: 'name', sort_direction: (params[:sort_by] == 'name' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'name' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Available Space (in Sq. ft.)', root_path(sort_by: 'available_space', sort_direction: (params[:sort_by] == 'available_space' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'available_space' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Price per Sq. ft. (in $)', root_path(sort_by: 'price', sort_direction: (params[:sort_by] == 'price' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'price' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Availability Start Date', root_path(sort_by: 'start_date', sort_direction: (params[:sort_by] == 'start_date' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'start_date' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Availability End Date', root_path(sort_by: 'end_date', sort_direction: (params[:sort_by] == 'end_date' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'end_date' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Distance from Campus (in Miles)', root_path(sort_by: 'campus_dist', sort_direction: (params[:sort_by] == 'campus_dist' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'campus_dist' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-            <th>
+            </th></tr>
+            <tr><th>
               <%= link_to 'Rating', root_path(sort_by: 'rating', sort_direction: (params[:sort_by] == 'rating' && params[:sort_direction] == 'asc') ? 'desc' : 'asc', min_available_space: params[:min_available_space], max_price_per_sqft: params[:max_price_per_sqft], max_distance_from_campus: params[:max_distance_from_campus]) %>
               <%= params[:sort_by] == 'rating' ? (params[:sort_direction] == 'asc' ? '↑' : '↓') : '' %>
-            </th>
-          </tr>
+            </th></tr>
         </thead>
-        <tbody>
-          <% @storages.each do |storage| %>
-            <tr>
-              <td><%= storage.name %></td>
-              <td><%= storage.available_space %></td>
-              <td><%= storage.price %></td>
-              <td><%= storage.start_date %></td>
-              <td><%= storage.end_date %></td>
-              <td><%= storage.campus_dist %></td>
-              <td><%= storage.rating %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        </table>
+        </div>
   </div>
 
-  <%= link_to 'Add new storage', home_new_path, :class => 'btn btn-primary' %>
+  
 
 </div>
