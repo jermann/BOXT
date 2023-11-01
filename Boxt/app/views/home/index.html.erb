@@ -25,11 +25,11 @@
           </div>
 
           <%= submit_tag 'Apply Filters', class: 'btn btn-primary btn-block' %>
-          <div style="margin-top:5%"></div>
-          <%= button_to 'Clear All', root_path, method: :get, params: { min_available_space: nil, max_price_per_sqft: nil,  max_distance_from_campus: nil}, class: 'btn btn-secondary btn-block' %>
-          <div style="margin-top:20%"></div>
-          <%= link_to 'Add new storage', home_new_path, :class => 'btn btn-primary' %>
         <% end %>
+        <div style="margin-top:5%"></div>
+        <%= button_to 'Clear All', root_path, method: :get, params: { min_available_space: nil, max_price_per_sqft: nil,  max_distance_from_campus: nil}, class: 'btn btn-secondary btn-block' %>
+        <div style="margin-top:20%"></div>
+        <%= link_to 'Add new storage', home_new_path, :class => 'btn btn-primary' %>
       </div>
     </div>
     
