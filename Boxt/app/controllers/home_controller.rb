@@ -56,7 +56,7 @@ class HomeController < ApplicationController
     end
   end
 
-  private
+ 
 
   def sort_storages(storages, sort_by, sort_direction)
     case sort_by
@@ -79,6 +79,7 @@ class HomeController < ApplicationController
     storages
   end
 
+  private
   def storage_params
     params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date)
   end
