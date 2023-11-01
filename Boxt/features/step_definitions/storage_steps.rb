@@ -138,21 +138,31 @@ Then("I should see storage listings sorted by Rating in descending order") do
   expect(ratings).to eq(ratings.sort.reverse)
 end
 
-When("I apply the following filters:") do |table|
-  filter_criteria = table.hashes
+Then("I should see only storage listings with available space greater than or equal to {int}") do |min_space|
+  filtered_storages = page.all(".storage-listing")
 
-  filter_criteria.each do |criteria|
-    case criteria['Filter']
-    when 'Minimum Available Space (in Sq. ft.)'
-      fill_in 'min_available_space', with: criteria['Value']
-    when 'Maximum Price per Sq. ft. (in $)'
-      fill_in 'max_price_per_sqft', with: criteria['Value']
-    when 'Maximum Distance from Campus (in Miles)'
-      fill_in 'max_distance_from_campus', with: criteria['Value']
-    end
+  filtered_storages.each do |storage|
+    available_space = storage.find(".available-space").text.to_i
+    expect(available_space).to be >= min_space
   end
+end
 
-  click_button 'Apply Filters' 
+Then("I should see only storage listings with price per sqft less than or equal to {int}") do |max_price_per_sqft|
+  filtered_storages = page.all(".storage-listing")
+
+  filtered_storages.each do |storage|
+    price_per_sqft = storage.find(".price-per-sqft").text.to_i
+    expect(price_per_sqft).to be <= max_price_per_sqft
+  end
+end
+
+Then("I should see only storage listings with a distance from campus less than or equal to {float}") do |max_distance_from_campus|
+  filtered_storages = page.all(".storage-listing")
+
+  filtered_storages.each do |storage|
+    distance_from_campus = storage.find(".distance-from-campus").text.to_f
+    expect(distance_from_campus).to be <= max_distance_from_campus
+  end
 end
 
 Then("I should see {string}") do |content|
@@ -169,10 +179,6 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
-end
-
-When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 

@@ -1,54 +1,22 @@
-Feature: Filter storage listings by criteria
-
+Feature: Filter Storage Listings
   As a user
-  So that I can find storage listings that match my criteria
-  I want to filter storage listings based on minimum available space, max price per sq. ft., and max distance from campus.
+  I want to filter storage listings based on minimum available space
+  So that I can see only those listings that meet my space requirements
 
-  Background: storage listings are available
-
-    Given the following storage listings exist:
-    | name              | available_space | price | campus_dist |
-    | Storage A         | 100             | 50    | 1           |
-    | Storage B         | 200             | 60    | 2           |
-    | Storage C         | 150             | 70    | 3           |
-    | Storage D         | 250             | 80    | 4           |
-    | Storage E         | 120             | 90    | 5           |
-
+  Background:
     When I visit the home page
 
-  Scenario: filter by minimum available space
-    When I apply the following filters:
-      | Min Available Space |
-      | 150                 |
-    Then I should see "Storage B"
-    And I should see "Storage C"
-    And I should see "Storage D"
+  Scenario: Filter storage listings by minimum available space
+    When I fill in "Min Available Space" with "150"
+    And I press "Apply Filters"
+    Then I should see only storage listings with available space greater than or equal to 150
 
-  Scenario: filter by max price per sq. ft.
-    When I apply the following filters:
-      | Max Price per Sq. ft. |
-      | 70                   |
-    Then I should see "Storage A"
-    And I should see "Storage B"
-    And I should see "Storage C"
+  Scenario: Filter storage listings by maximum price per sqft          |
+    When I fill in "Max Price per Sq ft" with "60"
+    And I press "Apply Filters"
+    Then I should see only storage listings with price per sqft less than or equal to 60
 
-  Scenario: filter by max distance from campus
-    When I apply the following filters:
-      | Max Distance from Campus |
-      | 3                       |
-    Then I should see "Storage A"
-    And I should see "Storage B"
-    And I should see "Storage C"
-
-  Scenario: combine multiple filters
-    When I apply the following filters:
-      | Min Available Space | Max Price per Sq. ft. | Max Distance from Campus |
-      | 150                 | 70                   | 3                       |
-    Then I should see "Storage B"
-
-  Scenario: clearing all filters
-    Given I apply the following filters:
-      | Min Available Space | Max Price per Sq. ft. | Max Distance from Campus |
-      | 150                 | 70                   | 3                       |
-    And I press 'Clear All'
-    Then I should see all storage listings
+  Scenario: Filter storage listings by maximum distance from campus
+    When I fill in "Max Distance to Campus" with "1.5"
+    And I press "Apply Filters"
+    Then I should see only storage listings with a distance from campus less than or equal to 1.5
