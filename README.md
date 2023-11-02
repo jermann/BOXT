@@ -21,4 +21,7 @@ bin/rake db:setup
 bin/rails server -b 0.0.0.0  
 
 ### Heroku App Link
-[https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/]
+https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/  
+
+### GitHub Repository Link
+https://github.com/jermann/BOXT  
