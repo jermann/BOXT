@@ -14,7 +14,11 @@ The software is designed as a storage marketplace where students can book storag
 
 ### Setup Instructions
 git clone git@github.com:[your_github_username]/BOXT.git  
-cd BOXT/Boxt/  
-bundle config set without 'production'  
+cd BOXT/  
+gem install bundler -v 2.0.0.pre.3
+bundler _2.0.0.pre.3_ --without production  
 bin/rake db:setup  
 bin/rails server -b 0.0.0.0  
+
+### Heroku App Link
+[https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/]
