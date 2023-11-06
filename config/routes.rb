@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  #get 'home/index'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
+  
   resources :home
   resources :storages
   root 'home#index'
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'
-  
   get 'home/show/:id', to: 'home#show', as: 'home_show'
 
 

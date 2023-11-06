@@ -12,6 +12,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails', '3.7.2'
   gem 'ZenTest', '4.11.2'
+  gem 'devise'
+  gem 'bundler', '~> 1.17'
 end
 
 group :test do
