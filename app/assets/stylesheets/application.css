@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ .top-right-menu {
+  text-align: right;
+}
+
+.top-menu-item {
+  margin-left: 10px; /* Adjust the spacing as needed */
+  color: white;
+  text-decoration: none;
+}

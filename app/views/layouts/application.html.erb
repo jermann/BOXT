@@ -1,4 +1,3 @@
-<%# Our "base" layout should be a valid HTML document. %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,12 +8,20 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%# These classes come from the Bootstrap CSS framework. %>
     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
       <h1 class="title">BOXT</h1>
+      <div class="top-right-menu">
+        <% if user_signed_in? %>
+          <!-- Display logout link when a user is logged in -->
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "top-menu-item" %>
+        <% else %>
+          <!-- Display login and registration links when a user is not logged in -->
+          <%= link_to "Login", new_user_session_path, class: "top-menu-item" %>
+          <%= link_to "Register", new_user_registration_path, class: "top-menu-item" %>
+        <% end %>
+      </div>
     </nav>
     <div class="container">
-      <%# Render "flash" messages in our application. This loads _flash.erb %>
       <%= render 'layouts/flash' %>
       <main id="main">
         <%= yield %>
