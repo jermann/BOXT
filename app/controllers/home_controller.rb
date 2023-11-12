@@ -18,7 +18,6 @@ class HomeController < ApplicationController
     flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
 
     redirect_to '/'
-
   end
 
   def create
