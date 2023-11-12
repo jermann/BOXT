@@ -1,17 +1,24 @@
 class HomeController < ApplicationController
 
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @storage = Storage.find(id) # look up movie by unique ID
-    # will render app/views/movies/show.<extension> by default
+    @storage = Storage.find(params[:id])
   end
 
-  def destroy
+  def update
     @storage = Storage.find(params[:id])
-    @storage.destroy
-    flash[:notice] = "Storage '#{@storage.name}' booked."
-    
+    bs = params[:storage][:book_space]
+    bs = bs.to_i
+    new_available_space = @storage.available_space - bs
+    @storage.update_attribute(:available_space, new_available_space)
+
+    if @storage.available_space <= 0
+      @storage.destroy
+    end
+
+    flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
+
     redirect_to '/'
+
   end
 
   def create

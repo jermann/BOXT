@@ -35,8 +35,12 @@
 
 <div>
 
-  <%= link_to 'Book Now', home_path(@storage), 'data-method' => 'delete', 'data-confirm' => 'Confirm Booking', :class => 'btn btn-danger col-2' %>   <br/>
+<%= form_for @storage, url: home_path(@storage),  method: :patch do |f| %>
+
+  Book Space (in sq. ft.): <%= f.text_field :book_space %>
+  <%= f.submit "Confirm Booking", :class => "col-md-2 btn btn-success"%>
+<% end %>
+
   <br/>
   <%= link_to 'Back home', '/', :class => 'btn btn-primary col-2' %>   <br/>
 </div>
-
