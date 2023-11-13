@@ -231,6 +231,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.4.1)
+  date_validator
   devise
   jquery-rails
   launchy
