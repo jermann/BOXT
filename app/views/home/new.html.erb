@@ -22,8 +22,13 @@
   <%= label :storage, :end_date, 'Availability End Date', :class => 'col-form-label'  %>
   <%= date_select :storage, :end_date, {}, :class => 'form-control col-2 d-inline' %>
 
-  <br/>
+  <br/><br/>
+  <%= label :storage, :image, 'Upload a Preview Image: ', :class => 'col-form-label'  %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= file_field :storage, :image %>
+
+  <br/><br/>
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
-   <%= link_to 'Cancel', '/', :class => 'btn btn-secondary' %>
+  <%= link_to 'Cancel', '/', :class => 'btn btn-secondary' %>
 
 <% end %>
