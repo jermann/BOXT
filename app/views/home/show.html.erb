@@ -34,12 +34,13 @@
 <div>
 
 <%= form_for @storage, url: home_path(@storage),  method: :patch do |f| %>
-
-  Book Space (in sq. ft.): <%= f.text_field :book_space %>
+  Book Space (in sq. ft.): <%= f.number_field :book_space,  min: 1,  max:  @storage.available_space %> 
   <%= f.submit "Confirm Booking", :class => "col-md-2 btn btn-success"%>
 <% end %>
- 
-  <br/>
-  <%= link_to 'Edit ', edit_home_path(@storage), :class => 'btn btn-primary col-2' %>
 
+  <br/>
+<div>
+  <%= link_to 'Edit ', edit_home_path(@storage), :class => 'btn btn-primary col-2' %>
+  <%= link_to 'Delete', home_path(@storage), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+ </div>
 </div>
