@@ -85,6 +85,9 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.4.1)
     date (3.3.4)
+    date_validator (0.10.0)
+      activemodel (>= 3)
+      activesupport (>= 3)
     declarative (0.0.20)
     devise (4.9.3)
       bcrypt (~> 3.0)
@@ -315,7 +318,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.4.1)
-  date_validator
+  date_validator (~> 0.10.0)
   devise
   google-cloud-storage
   image_processing (>= 1.2)

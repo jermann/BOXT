@@ -118,7 +118,7 @@ class HomeController < ApplicationController
 
   private
   def storage_params
-    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date)
+    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date, :image)
   end
 
   def invalid_params(st)
