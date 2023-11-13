@@ -9,7 +9,8 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
-      <h1 class="title">BOXT</h1>
+    <h1 class="title"> <%= link_to 'BOXT', '/', :style => 'color: #FFFFFF'%></h1>
+
       <div class="top-right-menu">
         <% if user_signed_in? %>
           <!-- Display logout link when a user is logged in -->
