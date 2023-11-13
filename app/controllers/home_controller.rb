@@ -8,21 +8,29 @@ class HomeController < ApplicationController
     @storage = Storage.find(params[:id])
     bs = params[:storage][:book_space]
     bs = bs.to_i
-    new_available_space = @storage.available_space - bs
-    @storage.update_attribute(:available_space, new_available_space)
 
-    if @storage.available_space <= 0
-      @storage.destroy
+    if bs != 0
+      new_available_space = @storage.available_space - bs
+      @storage.update_attribute(:available_space, new_available_space)
+
+      flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
+    else
+      old_name = @storage.name
+      @storage.update_attributes!(storage_params)
+
+      flash[:notice] = "'#{old_name}' updated."
     end
 
-    flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
-
     redirect_to '/'
+  end
 
+  def edit
+    @storage = Storage.find(params[:id])
   end
 
   def create
     @storage = Storage.create!(storage_params)
+    
     flash[:notice] = "#{@storage.name} was successfully created."
     redirect_to '/'
   end
@@ -33,6 +41,7 @@ class HomeController < ApplicationController
 
   def index
     @storages = Storage.all
+    @storages = Storage.where.not(available_space: 0.0)
 
     # Preserve sorting parameters if present
     @sort_by = params[:sort_by] || 'name' # Default sorting column
