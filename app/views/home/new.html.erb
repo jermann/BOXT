@@ -5,7 +5,7 @@
   <%= text_field :storage, :name, :class => 'form-control' %>
   
   <%= label :storage, :available_space, 'Available Space (in Sq. ft.)', :class => 'col-form-label' %>
-  <%= text_field :storage, :available_space, :class => 'form-control' %>
+  <%= number_field :storage, :available_space, :class => 'form-control' %>
   
   <%= label :storage, :price, 'Price per Sq. ft. (in $)', :class => 'col-form-label' %>
   <%= text_field :storage, :price, :class => 'form-control' %>
@@ -14,20 +14,21 @@
   <%= text_field :storage, :campus_dist, :class => 'form-control' %>
 
   <%= label :storage, :rating, 'Rating', :class => 'col-form-label' %>
-  <%= text_field :storage, :rating, :class => 'form-control' %>
-  
-  <%= label :storage, :start_date, 'Availability Start Date', :class => 'col-form-label'  %>
-  <%= date_select :storage, :start_date, {}, :class => 'form-control col-2 d-inline' %>
-<br/>
-  <%= label :storage, :end_date, 'Availability End Date', :class => 'col-form-label'  %>
-  <%= date_select :storage, :end_date, {}, :class => 'form-control col-2 d-inline' %>
+  <%= number_field :storage, :rating, in: 1.0..5.0, step: 0.1, :class => 'form-control' %>
 
+  <%= label :storage, :start_date, 'Availability Start Date', :class => 'col-form-label'  %>
+  <%= date_field :storage, :start_date, :class => 'form-control' %>
+  <br/>
+  <%= label :storage, :end_date, 'Availability End Date', :class => 'col-form-label'  %>
+
+  <%= date_field :storage, :end_date, :class => 'form-control' %>
   <br/><br/>
   <%= label :storage, :image, 'Upload a Preview Image: ', :class => 'col-form-label'  %>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= file_field :storage, :image %>
 
   <br/><br/>
+
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', '/', :class => 'btn btn-secondary' %>
 

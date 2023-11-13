@@ -4,24 +4,36 @@ class HomeController < ApplicationController
     @storage = Storage.find(params[:id])
   end
 
+  def destroy
+    @storage = Storage.find(params[:id])
+    @storage.destroy
+    flash[:notice] = "Storage '#{@storage.name}' deleted."
+
+    redirect_to '/'
+  end
+
   def update
     @storage = Storage.find(params[:id])
     bs = params[:storage][:book_space]
     bs = bs.to_i
 
-    if bs != 0
+    if bs > 0
       new_available_space = @storage.available_space - bs
       @storage.update_attribute(:available_space, new_available_space)
 
       flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
+      redirect_to '/'
     else
       old_name = @storage.name
-      @storage.update_attributes!(storage_params)
+      if @storage.update_attributes(storage_params)
 
-      flash[:notice] = "'#{old_name}' updated."
+        flash[:notice] = "'#{old_name}' updated."
+        redirect_to '/'
+      else
+        invalid_params(@storage)
+        redirect_to edit_home_path(@storage)
+      end
     end
-
-    redirect_to '/'
   end
 
   def edit
@@ -29,10 +41,19 @@ class HomeController < ApplicationController
   end
 
   def create
-    @storage = Storage.create!(storage_params)
-    
-    flash[:notice] = "#{@storage.name} was successfully created."
-    redirect_to '/'
+
+    @storage = Storage.new(storage_params)
+
+    if @storage.valid?
+      @storage.save
+      flash[:notice] = "#{@storage.name} was successfully created."
+      redirect_to '/'
+    else
+      if @storage.errors.any?
+        invalid_params(@storage)
+      end
+      render :new
+    end
   end
 
   def new
@@ -99,4 +120,14 @@ class HomeController < ApplicationController
   def storage_params
     params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date)
   end
+
+  def invalid_params(st)
+    if st.errors.any?
+      st.errors.full_messages.each do |msg|
+        flash[:notice] = msg
+      end
+    end
+  end
+
+
 end

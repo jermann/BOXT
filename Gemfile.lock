@@ -315,6 +315,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.4.1)
+  date_validator
   devise
   google-cloud-storage
   image_processing (>= 1.2)
