@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'
   get 'home/show/:id', to: 'home#show', as: 'home_show'
-
+  post 'home/:id/edit', to: 'home#index'
 
  # POST	/photos	photos#create
 
