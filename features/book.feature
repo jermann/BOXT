@@ -17,6 +17,6 @@ Background: Listings in database
   Scenario: Book space
     Given I visit the home page 
     And I click on the "Storage A" link
-    And I follow "Book Now"
+    And I press "Confirm Booking"
     Then  I should be on the home page
     Then I should see "Storage 'Storage A' booked"
