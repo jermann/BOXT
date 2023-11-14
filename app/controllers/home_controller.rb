@@ -7,39 +7,44 @@ class HomeController < ApplicationController
 
   def destroy
     @storage = Storage.find(params[:id])
-    @storage.destroy
-    flash[:notice] = "Storage '#{@storage.name}' deleted."
 
-    redirect_to '/'
+    if authorize_user(@storage)
+      @storage.destroy
+      flash[:notice] = "Storage '#{@storage.name}' deleted."
+
+      redirect_to '/'
+    end
   end
 
   def update
     @storage = Storage.find(params[:id])
   
-    # Call the authorize_user method to check if the current user is authorized
-    authorize_user(@storage)
-  
     bs = params[:storage][:book_space].to_i
   
     if bs > 0
+      #Implementation to book space as an user
       new_available_space = @storage.available_space - bs
       @storage.update_attribute(:available_space, new_available_space)
   
       flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
       redirect_to '/'
     else
-      old_name = @storage.name
-      if @storage.update_attributes(storage_params)
-        flash[:notice] = "'#{old_name}' updated."
-        redirect_to '/'
-      else
-        invalid_params(@storage)
-        redirect_to edit_home_path(@storage)
+      #Implementation to edit space as an owner 
+
+      # Call the authorize_user method to check if the current user is authorized
+      if authorize_user(@storage)
+        old_name = @storage.name
+        if @storage.update_attributes(storage_params)
+          flash[:notice] = "'#{old_name}' updated."
+          redirect_to '/'
+        else
+          invalid_params(@storage)
+          redirect_to edit_home_path(@storage)
+        end
       end
     end
   end
   
-
   def edit
     @storage = Storage.find(params[:id])
     authorize_user(@storage)
@@ -66,10 +71,12 @@ class HomeController < ApplicationController
   end
 
   def authorize_user(storage)
-    unless current_user == storage.user
-      flash[:alert] = "You are not authorized to edit this storage."
-      redirect_to root_path
+    if current_user != storage.user
+      flash[:notice] = "You are not authorized to edit this storage"
+      redirect_to '/'
+      return false
     end
+    return true 
   end
 
   def index
