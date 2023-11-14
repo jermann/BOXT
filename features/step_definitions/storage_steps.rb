@@ -200,10 +200,3 @@ Then /^(?:|I )should be on the home page$/ do
   end
 end
 
-# features/step_definitions/user_login_steps.rb
-
-Given("I am on the login page") do
-  visit new_user_session_path
-end
-
-

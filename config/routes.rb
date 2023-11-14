@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'home/show/:id', to: 'home#show', as: 'home_show'
   post 'home/:id/edit', to: 'home#index'
 
-  get 'login', to: 'devise/sessions#new', as: :login
 
  # POST	/photos	photos#create
 

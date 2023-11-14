@@ -5,7 +5,7 @@ gem 'rails', '5.2.1'
 gem "image_processing", ">= 1.2"
 gem "google-cloud-storage" #, "~> 1.11", require: false
 gem 'date_validator', '~> 0.10.0'
-
+gem 'devise'
 
 # for Heroku deployment 
 group :development, :test do
@@ -35,4 +35,3 @@ end
 gem 'sass-rails', '~> 5.0.3'
 gem 'uglifier', '>= 2.7.1'
 gem 'jquery-rails'
-gem 'devise'

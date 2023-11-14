@@ -8,8 +8,8 @@ Feature: User Login
     When I fill in "Email" with "harry.potter@example.com"
     And I fill in "Password" with "wizard123"
     And I press "Log in"
-    Then I should see "Signed in successfully."
-    And I should be on the home page
+    Then I should be on the home page
+    And I should see "Signed in successfully."
 
   Scenario: Unsuccessful login with invalid password
     Given I am on the login page
@@ -33,12 +33,8 @@ Feature: User Login
     Then I should see "You will receive an email with instructions on how to reset your password in a few minutes."
 
   Scenario: Log out
-    Given I am on the login page
-    When I fill in "Email" with "harry.potter@example.com"
-    And I fill in "Password" with "wizard123"
-    And I press "Log in"
-    And I should be on the home page
-    And I click on the "Logout" link
+    Given I am logged in
+    When I click on the "Logout" link
     Then I should see "Signed out successfully."
-    Then I am on the login page
+    And I am on the login page
 
