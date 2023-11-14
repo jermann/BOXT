@@ -1,4 +1,4 @@
-class CreateStorages < ActiveRecord::Migration
+class CreateStorages < ActiveRecord::Migration[5.2]
   def change
     create_table :storages do |t|
       t.string :name
@@ -8,6 +8,7 @@ class CreateStorages < ActiveRecord::Migration
       t.date :end_date
       t.float :campus_dist
       t.float :rating
+      #t.attachment :image
 
       t.timestamps null: false
     end

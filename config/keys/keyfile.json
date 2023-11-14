@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "esaas-404917",
+  "private_key_id": "3dbaa1bab41b2443ca095fa4c3ece5b87024cf0e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCnY8HPPEfr2EF5\n00WtqZuaQXcuduj+W2rkSlEulfJaJR0iTBUomh1uuaD2Tnr5irbqqj79iHDNacjF\nHQ33SAmfCcis7JRrm3ixADrp12t5MGwUnvac9PEtB1QVMhavN8qFMzETQuStjI/o\nHWFPyiKfUmLb7s1jKXbOSWBYWRhxGCDqCV5zGxqfYfuyHfPMBI+QVZen+AMpRTZC\nvcbX1usuviLt9WWGHzqlOdHKBPNfy96+aoCtpxVBAgMA30kPH+L0b1dRZjANjLbF\nCvwECHxPrqj3r4lmehqrZJrIIOGZGQLieo6++8rwSQguvhGtRIcZuKI5C8xgfefL\nEeu1eAQJAgMBAAECggEAGpXgp3zwAVh+AbmD/2feQ7AycSnyqcoJiUuiZtnq6Cqt\nMhAlFidFaxtxd108m9tOX6lSytVmRmxkNlD93FtP0ozCbMXrHBzRHO+n67xKoLCy\nTHjOO1yN3N8lRB6J9XdQzjoKCStJLaU9tUR2pa5kNFYTRydqQzMdNaNNeYq2XpO6\nuj0vTDrquV/QCDB4RHx04KFWJMHtxga3sPBrfCwm2KFtN63lnhTFbbR4cPSzDMc7\nJfhwRS2wF09kChrDam+7sReYexjVjx0QoE8KnY/3QlH1gVkUQw7DG/HXoU/anBJY\nZwyB7UNS1uApxSW8dknKXY8CIIt5UAHXp5wRXcdwRwKBgQDeCtDz/hrpwddRc73n\nfhjCWkW30iINW0BedZYjpAkTi9wtN/W58HITler5wb8A6L1tbGWoUzbz+rEnT+JE\nnNZ2X0GvDBcWpiBHw9oDCqD6B2Xu3Fploj8A7F1H4IdzhabUY6LRbyL3CFD2OM/3\nXf9eECckNJmpOySFleSkj7YAhwKBgQDA/TxrdIhC1CAKv5DgnQP9UvamaslVkIVG\nMJ7VHmQlo5KiTeZSinSxCy/RhD8cFnNVznX5ULINkPsogytn+8+8UodFCAQOvlqW\nqH7NvzIDF9ToWFZPMWSXa0LNxVkJCymyvAchLOAqrLmUhWbkT9Rh77TLB5VQpWvS\nSCuvGIXK7wKBgQDN3GdYH7oiCZawrMdfjdg0sO88ezUY/wZRzWES0C2eEqhiwCQx\nbQzGvdLqFkgY9q9ReRNTGTu0vjNqyDR2+pYXjz9dpK7vT7xT7O/+q+cNiLhn2aJx\n4hfZqkrdrfzHDR3cgjfdRtW7BNnTPl8J7/sn4X/4oE/qx6uXsp4WOCs8lwKBgAIF\nJJLDX4HDkqpKIwwW2KnYKnjHeWAJ6Ts42xDEBqxWL/y+8ABBLsODqHZ6+eYjXgWx\n6Y44iASYVeiwps2p1xzTiFLyqIg2+d/F173zmGRr5XChLBYcID9tgf+BZ1Mu6LrU\nOQbh317S/AZP9ynApCp6RdwyMh/r+1ryInLswMnFAoGAfQN3+QQfc8nluc+2bFXm\nusHLd4HWdTDfeRUbe/j6IIndzM9OI9nHmC9ItvbgwUyA1Q1mrLf7fjB7iOlb4yoQ\n9z+AQ0ps6BNjNp36hSRbzkFDbV2YMgSAe8pafuhq0V6WlvzDhFJEK6KwmqPNUNDj\nm5yQJp449SkS8SnREC8ptVc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "boxt-image-storage@esaas-404917.iam.gserviceaccount.com",
+  "client_id": "103807565692358520010",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/boxt-image-storage%40esaas-404917.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
