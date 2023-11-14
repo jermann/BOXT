@@ -42,11 +42,11 @@
         </div>
           <% @storages.each do |storage| %>
           <div style="display:flex; flex-direction:row; margin-bottom: 15px; background-color:rgba(255, 255, 255, 0.8); border-radius:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2)">
-            <div>
+            <div style="margin: 8px">
               <% if storage.image.attached? %>
-                <%= image_tag storage.image, height: 175 %>
+                <%= image_tag storage.image, height: 175, width: 175 %>
               <% else %>
-                <%= image_tag "default_icon.png", height: 175 %>
+                <%= image_tag "default_icon.png", height: 175, width: 175 %>
               <% end %>
             </div>
             <div>
