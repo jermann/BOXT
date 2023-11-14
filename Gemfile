@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.6'
 gem 'rails', '5.2.1'
 gem "image_processing", ">= 1.2"
-gem "google-cloud-storage", "~> 1.11", require: false
+gem "google-cloud-storage" #, "~> 1.11", require: false
 gem 'date_validator', '~> 0.10.0'
 
 
