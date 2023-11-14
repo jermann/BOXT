@@ -12,6 +12,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'byebug'
   gem 'database_cleaner', '1.4.1'
+  gem 'date_validator', '~> 0.10.0'
   gem 'capybara', '2.4.4'
   gem 'launchy'
   gem 'rspec-rails', '3.7.2'

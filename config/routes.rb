@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
   
   resources :home
-  resources :storages
+  resources :storages, only: [:show]
   root 'home#index'
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'

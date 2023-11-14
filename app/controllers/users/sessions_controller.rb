@@ -24,4 +24,13 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def create
+    super do |resource|
+      if session[:storage_id_to_book].present?
+        storage = Storage.find(session[:storage_id_to_book])
+        session[:storage_id_to_book] = nil
+        redirect_to storage_path(storage), notice: 'Logged in successfully.'
+      end
+    end
+  end
 end

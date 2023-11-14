@@ -1,4 +1,5 @@
 class Storage < ActiveRecord::Base
+  belongs_to :user
   attr_accessor :book_space
 
   has_one_attached :image
