@@ -11,4 +11,3 @@ google:
   credentials: <%= Rails.root.join("config/keys/keyfile.json") %>
   project: ""
   bucket: ""
-  public: true
