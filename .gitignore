@@ -19,3 +19,5 @@ log
 .byebug_history
 /tmp/cache/*
 /storage
+/coverage
+.idea/
