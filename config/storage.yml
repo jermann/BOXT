@@ -9,6 +9,5 @@ test:
 google:
   service: GCS
   credentials: <%= Rails.root.join("config/keys/keyfile.json") %>
-  project: ""
-  bucket: ""
-  public: true
+  project: esaas-404917
+  bucket: boxt-storage
