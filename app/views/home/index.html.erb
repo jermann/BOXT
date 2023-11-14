@@ -11,17 +11,17 @@
 
           <div class="form-group">
             <%= label_tag 'Min Space (Sq ft)' %>
-            <%= text_field_tag :min_available_space, params[:min_available_space], class: 'form-control', placeholder: 'Min Available Space' %>
+            <%= number_field_tag :min_available_space, params[:min_available_space], min: 0, class: 'form-control', placeholder: 'Min Available Space' %>
           </div>
 
           <div class="form-group">
             <%= label_tag 'Max Price (in $)' %>
-            <%= text_field_tag :max_price_per_sqft, params[:max_price_per_sqft], class: 'form-control', placeholder: 'Max Price per Sq ft' %>
+            <%= number_field_tag :max_price_per_sqft, params[:max_price_per_sqft], min: 0, step: 0.01, class: 'form-control', placeholder: 'Max Price per Sq ft' %>
           </div>
 
           <div class="form-group">
             <%= label_tag 'Max Distance (Miles)' %>
-            <%= text_field_tag :max_distance_from_campus, params[:max_distance_from_campus], class: 'form-control', placeholder: 'Max Distance to Campus' %>
+            <%= number_field_tag :max_distance_from_campus, params[:max_distance_from_campus], min: 0, step: 0.01, class: 'form-control', placeholder: 'Max Distance to Campus' %>
           </div>
 
           <%= submit_tag 'Apply Filters', class: 'btn btn-primary btn-block' %>
