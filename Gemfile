@@ -17,7 +17,6 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails', '3.7.2'
   gem 'ZenTest', '4.11.2'
-  gem 'devise'
   gem 'bundler', '~> 1.17'
 end
 
@@ -36,4 +35,4 @@ end
 gem 'sass-rails', '~> 5.0.3'
 gem 'uglifier', '>= 2.7.1'
 gem 'jquery-rails'
-gem 'date_validator', '~> 0.10.0'
+gem 'devise'
