@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def show
     @storage = Storage.find(params[:id])
@@ -14,19 +15,21 @@ class HomeController < ApplicationController
 
   def update
     @storage = Storage.find(params[:id])
-    bs = params[:storage][:book_space]
-    bs = bs.to_i
-
+  
+    # Call the authorize_user method to check if the current user is authorized
+    authorize_user(@storage)
+  
+    bs = params[:storage][:book_space].to_i
+  
     if bs > 0
       new_available_space = @storage.available_space - bs
       @storage.update_attribute(:available_space, new_available_space)
-
+  
       flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
       redirect_to '/'
     else
       old_name = @storage.name
       if @storage.update_attributes(storage_params)
-
         flash[:notice] = "'#{old_name}' updated."
         redirect_to '/'
       else
@@ -35,14 +38,16 @@ class HomeController < ApplicationController
       end
     end
   end
+  
 
   def edit
     @storage = Storage.find(params[:id])
+    authorize_user(@storage)
   end
 
   def create
-
     @storage = Storage.new(storage_params)
+    @storage.user = current_user
 
     if @storage.valid?
       @storage.save
@@ -58,6 +63,13 @@ class HomeController < ApplicationController
 
   def new
     # default: render 'new' template
+  end
+
+  def authorize_user(storage)
+    unless current_user == storage.user
+      flash[:alert] = "You are not authorized to edit this storage."
+      redirect_to root_path
+    end
   end
 
   def index
