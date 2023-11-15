@@ -154,4 +154,37 @@ describe "authorize user" do
     
 end
 
+describe "edit listing" do
+  before(:each) do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
+    @u1 = u1
+    @u2 = u2
+    @s1 = s1
+    sign_in @u2
+  end
+
+  it 'checks edit permissions' do
+    get :edit, params: { id: @s1.id }
+    expect(flash[:notice]).to eq("You are not authorized to edit this storage")
+  end
+
+end
+
+describe 'filter conditions' do
+  before(:each) do
+    s1 = Storage.create(name: 'Storage C', available_space: 70, price: 5, campus_dist: 0.2, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024')
+    s2 = Storage.create(name: 'Storage A', available_space: 30, price: 10, campus_dist: 1.5, rating: 1.3, start_date: '01-May-2024', end_date: '01-Aug-2024')
+    @s1 = s1
+    @s2 = s2
+  end
+
+  it 'should not display the storage that do not meet the filter conditions' do
+    get :index, params: { min_available_space: 50, max_price_per_sqft: 7, max_distance_from_campus: 1 }
+    @storages_list = Storage.all
+    expect(response.body).not_to include(@s2.name)
+  end
+end
+
 end
