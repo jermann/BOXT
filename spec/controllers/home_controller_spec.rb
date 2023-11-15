@@ -2,30 +2,51 @@ require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
 
+include Devise::Test::ControllerHelpers
+
 describe 'show storage' do
   it 'should show storage' do
-    s = Storage.create(name: 'Storage A', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024')
-    expect(Storage.find_by(name:'Storage A')).to_not be nil
-    put :show, id: s.id
+    s = Storage.create!(name: 'Storage A', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024')
+    get :show, params: { id: s.id }
     expect(Storage.find_by(name:'Storage A')).to_not be nil
   end
 end
 
 describe 'create storage' do
-  it 'should create a new storage' do
-    expect(Storage.find_by(name:'Storage B')).to be nil
-    put :create, storage: {name: 'Storage B', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024' }
-    expect(Storage.find_by(name:'Storage B')).to_not be nil
+  before(:each) do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    @u1 = u1
+    sign_in @u1
+  end
+
+  it 'should create a new storage when valid parameters are provided' do
+    expect(Storage.find_by(name:'Storage A')).to be nil
+    post :create, params: { storage: {name: 'Storage A', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024'}}
+    expect(Storage.find_by(name:'Storage A')).to_not be nil
+  end
+
+  it 'should not work when invalid parameters are provided' do
+    expect(Storage.find_by(name:'Storage A')).to be nil
+    post :create, params: { storage: {name: '', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2023'}}
+    expect(Storage.find_by(name:'Storage A')).to be nil
   end
 end
 
 describe 'delete storage' do
-  it 'should delete an existing storage' do
+  before(:each) do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    @u1 = u1
+    @u2 = u2
+    sign_in @u1
+  end
+
+  it 'should delete an existing storage if it is an authorized user' do
     
-    s = Storage.create(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024')
+    s = Storage.create(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: @u1)
     expect(Storage.find_by(name:'Storage C')).to_not be nil
 
-    delete :destroy, id: s.id
+    delete :destroy, params: { id: s.id }
     expect(Storage.find_by(name:'Storage C')).to be nil
   end
 end
@@ -71,6 +92,31 @@ describe "GET #index" do
     get :index
     expect(response).to have_http_status(:success)
   end
+end
+
+describe "authorize user" do
+  before(:each) do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
+    @u1 = u1
+    @u2 = u2
+    @s1 = s1
+  end
+
+  it 'returns true if user is authorized' do
+    allow(controller).to receive(:current_user).and_return(@u1)
+    result = controller.authorize_user(@s1)
+    expect(result).to be_truthy
+  end
+
+  it 'returns false if user is unauthorized' do
+    allow(controller).to receive(:current_user).and_return(@u2)
+    allow(controller).to receive(:redirect_to)
+    result = controller.authorize_user(@s1)
+    expect(result).to be_falsey
+  end
+    
 end
 
 end
