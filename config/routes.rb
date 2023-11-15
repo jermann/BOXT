@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'home/show/:id', to: 'home#show', as: 'home_show'
   post 'home/:id/edit', to: 'home#index'
 
+
  # POST	/photos	photos#create
 
   # The priority is based upon order of creation: first created -> highest priority.

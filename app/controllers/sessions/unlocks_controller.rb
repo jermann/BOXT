@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sessions::UnlocksController < Devise::UnlocksController
+#class Sessions::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
   # def new
   #   super
@@ -27,4 +27,4 @@ class Sessions::UnlocksController < Devise::UnlocksController
   # def after_unlock_path_for(resource)
   #   super(resource)
   # end
-end
+#end

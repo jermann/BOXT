@@ -8,12 +8,16 @@ Given("the following storage listings exist:") do |table|
   end
 end
 
+# Given("I am logged in") do
+#   expect(page).to have_no_content("Logout")
+# end
+
 Then("I should see all storage listings") do
   expect(page).to have_css('#storages') 
 end
 
-When("I click on the {string} link") do |column_name|
-  click_link(column_name)
+When("I click on the {string} link") do |link_text|
+  click_link(link_text)
 end
 
 Then("I should see storage listings sorted by name in ascending order") do
@@ -173,15 +177,11 @@ Given("I press {string}") do |string|
   click_button string
 end
 
-Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
-end
-
 # AJ: The below parts are adapted from web_steps - maybe we can import instead of pasting?
 
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if page.respond_to? :should
-    page.should have_no_content(text)
+    expect(page).to have_no_content(text)
   else
     assert page.has_no_content?(text)
   end
@@ -198,8 +198,9 @@ end
 Then /^(?:|I )should be on the home page$/ do
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
-    current_path.should == root_path
+    expect(current_path).to eq root_path
   else
     assert_equal root_path, current_path
   end
 end
+
