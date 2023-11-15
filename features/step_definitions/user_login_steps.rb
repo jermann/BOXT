@@ -2,6 +2,14 @@ Given("I am on the login page") do
   visit new_user_session_path
 end
 
+Given("I am signed up") do
+  @user = User.create!({
+                         :email => "user@example.com",
+                         :password => "password",
+                         :password_confirmation => "password"
+                       })
+end
+
 Given("I am logged in") do
   visit new_user_session_path
   fill_in 'Email', with: 'user@example.com'

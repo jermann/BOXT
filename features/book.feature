@@ -15,6 +15,7 @@ Background: Listings in database
     | Storage E         | 120             | 90    | 5           | 4.2     | 2024-09-30  | 2024-11-30  |
 
   Scenario: Book space when logged in
+    Given I am signed up
     Given I am logged in
     And I visit the home page 
     And I click on the "Storage A" link
