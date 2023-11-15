@@ -32,6 +32,41 @@ describe 'create storage' do
   end
 end
 
+describe 'update storage' do
+  before(:each) do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
+    @u1 = u1
+    @u2 = u2
+    @s1 = s1
+  end
+
+  it 'books space and updates available space as a normal user' do
+    sign_in @u2
+    post :update, params: { id: @s1.id, storage: { book_space: 20 } }
+    expect(response).to redirect_to('/')
+    expect(flash[:notice]).to include('20 sq ft. booked in storage')
+    expect(@s1.reload.available_space).to eq(50)
+  end
+
+  it 'updates any storage info as owner' do
+    sign_in @u1
+    post :update, params: { id: @s1.id, storage: { price: 15 } }
+    expect(response).to redirect_to('/')
+    expect(flash[:notice]).to include("'Storage C' updated.")
+    expect(@s1.reload.price).to eq(15)
+  end
+
+  it 'redirects to edit page if update has invalid parameters' do
+    sign_in @u1
+    post :update, params: { id: @s1.id, storage: { end_date: '10-Aug-2023' } }
+
+    expect(response).to redirect_to(edit_home_path(@s1))
+  end
+
+end
+
 describe 'delete storage' do
   before(:each) do
     u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
