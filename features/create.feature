@@ -4,7 +4,8 @@ Feature: Create New Storage Listing
   So that I can easily create new storage listing
   I want to be able to click a button to enter all the information I would like to be displayed.
 
-  Scenario: Create new listing when logged in
+  Scenario: Create new listing when logged in'
+    Given I am signed up
     Given I am logged in
     And I visit the home page
     And I follow "Add new storage"
