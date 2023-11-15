@@ -25,3 +25,13 @@ https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/
 
 ### GitHub Repository Link
 https://github.com/jermann/BOXT  
+
+### App Main Features Workflow:
+- Sign-Up Requirement:  
+New users are required to sign up to access all features of the application.  
+- Login Requirement:  
+Logging in is mandatory for actions like creating, editing, or deleting listings.  
+- User-Specific Actions:  
+Users are restricted to editing and deleting only the listings they have created.  
+- Anonymous Access:  
+Users can browse and view all listings, sort, filter as well as view details pages, without needing to log in.  
