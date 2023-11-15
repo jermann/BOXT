@@ -28,3 +28,5 @@ Background: Listings in database
     And I click on the "Storage A" link
     And I press "Confirm Booking"
     Then I should be on the login page
+
+    Scenario:
