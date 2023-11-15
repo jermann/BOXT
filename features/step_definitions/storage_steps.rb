@@ -8,6 +8,10 @@ Given("the following storage listings exist:") do |table|
   end
 end
 
+# Given("I am logged in") do
+#   expect(page).to have_no_content("Logout")
+# end
+
 Then("I should see all storage listings") do
   expect(page).to have_css('#storages') 
 end
@@ -177,7 +181,7 @@ end
 
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if page.respond_to? :should
-    page.should have_no_content(text)
+    expect(page).to have_no_content(text)
   else
     assert page.has_no_content?(text)
   end
@@ -194,7 +198,7 @@ end
 Then /^(?:|I )should be on the home page$/ do
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
-    current_path.should == root_path
+    expect(current_path).to eq root_path
   else
     assert_equal root_path, current_path
   end
