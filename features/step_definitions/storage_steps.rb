@@ -173,6 +173,10 @@ Given("I press on Save") do
   click_on('Save')
 end
 
+Given("I press on Delete") do
+  click_on('Delete')
+end
+
 Given("I press {string}") do |string|
   click_button string
 end
