@@ -14,9 +14,9 @@ The software is designed as a storage marketplace where students can book storag
 
 ### Setup Instructions
 ##### Prerequisites:  
-Ruby 2.6.6
-Rails 5.2.1
-Bundler 1.17.3
+Ruby 2.6.6  
+Rails 5.2.1  
+Bundler 1.17.3  
 ##### App setup:
 git clone https://github.com/jermann/BOXT.git  
 cd BOXT/  
