@@ -41,7 +41,7 @@ Users are restricted to editing and deleting only the listings they have created
 - Anonymous Access:  
 Users can browse and view all listings, sort, filter as well as view details pages, without needing to log in.  
 - Book Portion of the Listing:  
-Logged in users can book a portion of the space as per their requirement  
+Logged in users can book a portion of the space or the entire listing. If the user books the entire space, the listing will no longer be listed as it is booked out.   
 - Data Validation:   
 Data entered while creating a new listing or editing an existing listing is validated.  
   
