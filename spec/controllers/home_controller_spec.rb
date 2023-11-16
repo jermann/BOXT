@@ -167,7 +167,7 @@ describe "edit listing" do
 
   it 'checks edit permissions' do
     get :edit, params: { id: @s1.id }
-    expect(flash[:notice]).to eq("You are not authorized to edit this storage")
+    expect(flash[:notice]).to eq("You are not authorized to edit/delete this storage")
   end
 
 end
