@@ -169,10 +169,6 @@ Then("I should see {string}") do |content|
   expect(page).to have_content(content)
 end
 
-Given("I press on Save") do 
-  click_on('Save')
-end
-
 Given("I press {string}") do |string|
   click_button string
 end
@@ -202,5 +198,9 @@ Then /^(?:|I )should be on the home page$/ do
   else
     assert_equal root_path, current_path
   end
+end
+
+Given('there is a storage listing with name {string}') do |storage_name|
+  Storage.create(name: storage_name)
 end
 
