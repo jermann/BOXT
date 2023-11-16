@@ -13,7 +13,7 @@ This repo is the realization of our Software-as-a-Service class project to imple
 The software is designed as a storage marketplace where students can book storage space to safely store their belongings over the summer when they have to move out of their dorm. It also allows students living off-campus with year long leases to list their space as storage to earn some income when they are not using the space. 
 
 ### Setup Instructions
-#### Prerequisites:  
+##### Prerequisites:  
 Ruby 2.6.6
 Rails 5.2.1
 Bundler 1.17.3
