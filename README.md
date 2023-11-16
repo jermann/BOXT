@@ -18,7 +18,7 @@ Ruby 2.6.6
 Rails 5.2.1  
 Bundler 1.17.3  
 ##### App setup:
-git clone https://github.com/jermann/BOXT.git  
+git clone https://github.com/jermann/BOXT.git (Please use ["Iteration 2"](https://github.com/jermann/BOXT/tree/iteration2) branch)  
 cd BOXT/  
 bundle update  
 bundle install --without production  
@@ -29,7 +29,7 @@ rails server -b 0.0.0.0
 https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/  
 
 ### GitHub Repository Link
-https://github.com/jermann/BOXT  
+https://github.com/jermann/BOXT/tree/iteration2
 
 ### App Main Features Workflow:
 - Sign-Up Requirement:  
