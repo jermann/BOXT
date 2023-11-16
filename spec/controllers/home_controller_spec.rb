@@ -27,7 +27,7 @@ describe 'create storage' do
 
   it 'should not work when invalid parameters are provided' do
     expect(Storage.find_by(name:'Storage A')).to be nil
-    post :create, params: { storage: {name: '', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2023'}}
+    post :create, params: { storage: {name: 'Storage A', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2023'}}
     expect(Storage.find_by(name:'Storage A')).to be nil
   end
 end
