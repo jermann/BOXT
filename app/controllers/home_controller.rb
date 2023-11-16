@@ -50,24 +50,29 @@ class HomeController < ApplicationController
     authorize_user(@storage)
   end
 
-  def create
-    @storage = Storage.new(storage_params)
-    @storage.user = current_user
-
-    if @storage.valid?
-      @storage.save
-      flash[:notice] = "#{@storage.name} was successfully created."
-      redirect_to '/'
-    else
-      if @storage.errors.any?
-        invalid_params(@storage)
-      end
-      render :new
-    end
-  end
-
   def new
     # default: render 'new' template
+  end
+
+  def create
+
+    @storage = Storage.create!(storage_params)
+    flash[:notice] = "#{@storage.name} was successfully created."
+    redirect_to '/'
+
+    #@storage = Storage.new(storage_params)
+    #@storage.user = current_user
+
+    #if @storage.valid?
+     # @storage.save
+      #flash[:notice] = "#{@storage.name} was successfully created."
+      #redirect_to '/'
+    #else
+     # if @storage.errors.any?
+      #  invalid_params(@storage)
+      #end
+      #render :new
+    #end
   end
 
   def authorize_user(storage)
@@ -137,7 +142,7 @@ class HomeController < ApplicationController
 
   private
   def storage_params
-    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date, :image)
+    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date, :image, :user)
   end
 
   def invalid_params(st)

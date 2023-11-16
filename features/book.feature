@@ -19,9 +19,11 @@ Background: Listings in database
     Given I am logged in
     And I visit the home page 
     And I click on the "Storage A" link
+    Then I should see "Book Space (in sq. ft.):"
+    When I fill in "storage[book_space]" with "10"
     And I press "Confirm Booking"
     Then I should be on the home page
-    And I should see "Storage 'Storage A' booked"
+    And I should see "10 sq ft. booked in storage 'Storage A' booked."
 
   Scenario: Attempt to book space when not logged in
     Given I am not logged in
@@ -30,4 +32,4 @@ Background: Listings in database
     And I press "Confirm Booking"
     Then I should be on the login page
 
-    Scenario:
+  

@@ -8,10 +8,6 @@ Given("the following storage listings exist:") do |table|
   end
 end
 
-# Given("I am logged in") do
-#   expect(page).to have_no_content("Logout")
-# end
-
 Then("I should see all storage listings") do
   expect(page).to have_css('#storages') 
 end
@@ -171,6 +167,10 @@ end
 
 Then("I should see {string}") do |content|
   expect(page).to have_content(content)
+end
+
+Given("I press on Save") do 
+  click_on('Save')
 end
 
 Given("I press {string}") do |string|
