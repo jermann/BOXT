@@ -55,29 +55,24 @@ class HomeController < ApplicationController
   end
 
   def create
+    @storage = Storage.new(storage_params)
+    @storage.user = current_user
 
-    @storage = Storage.create!(storage_params)
-    flash[:notice] = "#{@storage.name} was successfully created."
-    redirect_to '/'
-
-    #@storage = Storage.new(storage_params)
-    #@storage.user = current_user
-
-    #if @storage.valid?
-     # @storage.save
-      #flash[:notice] = "#{@storage.name} was successfully created."
-      #redirect_to '/'
-    #else
-     # if @storage.errors.any?
-      #  invalid_params(@storage)
-      #end
-      #render :new
-    #end
+    if @storage.valid?
+      @storage.save
+      flash[:notice] = "#{@storage.name} was successfully created."
+      redirect_to '/'
+    else
+      if @storage.errors.any?
+        invalid_params(@storage)
+      end
+      render :new
+    end
   end
 
   def authorize_user(storage)
     if current_user != storage.user
-      flash[:notice] = "You are not authorized to edit this storage"
+      flash[:notice] = "You are not authorized to edit/delete this storage"
       redirect_to '/'
       return false
     end
@@ -142,7 +137,7 @@ class HomeController < ApplicationController
 
   private
   def storage_params
-    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date, :image, :user)
+    params.require(:storage).permit(:name, :available_space, :price, :campus_dist, :rating, :start_date, :end_date, :image)
   end
 
   def invalid_params(st)
