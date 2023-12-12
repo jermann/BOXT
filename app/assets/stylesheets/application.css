@@ -23,3 +23,18 @@
   color: white;
   text-decoration: none;
 }
+
+.sortable-link {
+  text-decoration: none;
+  color: #000; /* Set your desired color */
+}
+
+.sort-arrow {
+  margin-left: 5px;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.sort-arrow:empty {
+  display: none;
+}

@@ -50,11 +50,21 @@ class HomeController < ApplicationController
     authorize_user(@storage)
   end
 
+  def clear_sort_and_filter_session
+    session[:sort_by] = nil
+    session[:sort_direction] = nil
+    session[:min_available_space] = nil
+    session[:max_price_per_sqft] = nil
+    session[:max_distance_from_campus] = nil
+  end
+
   def new
-    # default: render 'new' template
+    # Clear sorting and filtering parameters from session
+    clear_sort_and_filter_session
   end
 
   def create
+    clear_sort_and_filter_session
     @storage = Storage.new(storage_params)
     @storage.user = current_user
 
@@ -110,6 +120,15 @@ class HomeController < ApplicationController
       max_distance_from_campus = @max_distance_from_campus.to_f
       @storages = @storages.where('campus_dist <= ?', max_distance_from_campus)
     end
+
+    # Store sorting parameters in session
+    session[:sort_by] = @sort_by
+    session[:sort_direction] = @sort_direction
+
+    # Store filter criteria in session
+    session[:min_available_space] = @min_available_space
+    session[:max_price_per_sqft] = @max_price_per_sqft
+    session[:max_distance_from_campus] = @max_distance_from_campus
   end
 
  
