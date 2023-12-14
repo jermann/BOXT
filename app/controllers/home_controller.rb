@@ -167,10 +167,9 @@ class HomeController < ApplicationController
 
   def invalid_params(st)
     if st.errors.any?
-      flash[:notice] = "Invalid Input Data"
-      #st.errors.full_messages.each do |msg|
-        #flash[:notice] = msg
-      #end
+      st.errors.full_messages.each do |msg|
+       flash[:notice] = msg
+      end
     end
   end
 
