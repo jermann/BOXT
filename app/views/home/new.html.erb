@@ -2,38 +2,39 @@
 
 <%= form_with url: home_new_path, model: @storage, :class => 'form' do |fm| %>
   <%= fm.fields_for :storage do |f| %>
-  <%= f.label :name, 'Name', :class => 'col-form-label' %>
-  <%= f.text_field :name, :class => 'form-control' %>
+
+  <%= label :storage, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :storage, :name, :class => 'form-control' %>
+    
+  <%= label :storage, :available_space, 'Available Space (in Sq. ft.)', :class => 'col-form-label' %>
+  <%= text_field :storage, :available_space, :class => 'form-control' %>
   
-  <%= f.label :available_space, 'Available Space (in Sq. ft.)', :class => 'col-form-label' %>
-  <%= f.number_field :available_space, :class => 'form-control' %>
+  <%= label :storage, :price, 'Price per Sq. ft. (in $)', :class => 'col-form-label' %>
+  <%= text_field :storage, :price, :class => 'form-control' %>
+
+  <%= label :storage, :campus_dist, 'Distance from Campus (in Miles)', :class => 'col-form-label' %>
+  <%= text_field :storage, :campus_dist, :class => 'form-control' %>
+
+  <%= label :storage, :rating, 'Rating', :class => 'col-form-label' %>
+  <%= text_field :storage, :rating, :class => 'form-control' %>
   
-  <%= f.label :price, 'Price per Sq. ft. (in $)', :class => 'col-form-label' %>
-  <%= f.text_field :price, :class => 'form-control' %>
-
-  <%= f.label :campus_dist, 'Distance from Campus (in Miles)', :class => 'col-form-label' %>
-  <%= f.text_field :campus_dist, :class => 'form-control' %>
-
-  <%= f.label :rating, 'Rating', :class => 'col-form-label' %>
-  <%= f.number_field :rating, in: 1.0..5.0, step: 0.1, :class => 'form-control' %>
-
-  <%= f.label :start_date, 'Availability Start Date', :class => 'col-form-label'  %>
-  <%= f.date_field :start_date, :class => 'form-control' %>
   <br/>
-  <%= f.label :end_date, 'Availability End Date', :class => 'col-form-label'  %>
+  <%= label :storage, :start_date, 'Availability Start Date', :class => 'col-form-label'  %>
+  <%= date_field :storage, :start_date, :class => 'form-control' %>
+  <br/>
+  <%= label :storage, :end_date, 'Availability End Date', :class => 'col-form-label'  %>
+  <%= date_field :storage, :end_date, :class => 'form-control' %>
 
-  <%= f.date_field :end_date, :class => 'form-control' %>
-  <br/><br/>
+  <br/>
+
   <%= f.label :image, 'Upload an Image of the Storage Space: ', :class => 'col-form-label'  %>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.file_field :image %>
-
-  <br/><br/>
-
-
+  <br/>
+  <br/>
+ 
   <%= submit_tag 'Save', :class => "col-md-2 btn btn-success"%>
   <%= link_to 'Cancel', '/', :class => 'btn btn-secondary' %>
-  <% end %>
-
-
 <% end %>
+
+  <% end %>
