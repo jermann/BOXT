@@ -14,7 +14,7 @@ end
 
 describe 'create storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter1@example.com', password: 'wizard123')
     @u1 = u1
     sign_in @u1
   end
@@ -34,8 +34,8 @@ end
 
 describe 'update storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter2@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger2@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
@@ -69,8 +69,8 @@ end
 
 describe 'delete storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter3@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger3@example.com', password: 'libraryGirl')
     @u1 = u1
     @u2 = u2
     sign_in @u1
@@ -131,8 +131,8 @@ end
 
 describe "authorize user" do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter4@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger4@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
@@ -156,8 +156,8 @@ end
 
 describe "edit listing" do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter5@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger5@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
