@@ -14,6 +14,7 @@
       <div class="top-right-menu">
         <% if user_signed_in? %>
           <!-- Display logout link when a user is logged in -->
+          <%= link_to "My Profile", profile_path(current_user), class: "top-menu-item" %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "top-menu-item" %>
         <% else %>
           <!-- Display login and registration links when a user is not logged in -->
