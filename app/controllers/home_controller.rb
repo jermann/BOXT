@@ -18,14 +18,20 @@ class HomeController < ApplicationController
 
   def update
     @storage = Storage.find(params[:id])
-  
+    
     bs = params[:storage][:book_space].to_i
   
     if bs > 0
       #Implementation to book space as an user
+      @user = current_user
+
+      puts(@user.id)
+      #@user.new_booking(params[:id], bs)
+      Booking.create(:booked_space => bs, :user_rating => nil, :user_id => @user.id, :storage_id => params[:id])
+
       new_available_space = @storage.available_space - bs
       @storage.update_attribute(:available_space, new_available_space)
-  
+           
       flash[:notice] = "#{bs} sq ft. booked in storage '#{@storage.name}' booked."
       redirect_to '/'
     else

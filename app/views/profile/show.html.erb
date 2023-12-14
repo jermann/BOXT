@@ -1,0 +1,98 @@
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
+    html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
+    .w3-bar-block .w3-bar-item {padding: 16px}
+    </style>
+ </head>
+
+    <!-- Profile -->
+    <div class=" w3-card w3-round w3-white">
+      <div class="w3-container w3-blue-grey">
+        <h4 class="w3-center" style="margin-top:20px">My Profile</h4>
+        <p class="w3-center"><i class="fa fa-user-circle fa-5x" class="w3-margin w3-circle" alt="Person" style="width:100%"></i></p>
+        <hr>
+        <p class="w3-center"> Email id: <%= @user.email %></p>
+          
+      </div>
+    </div>
+    <br>
+ 
+    <!-- The Grid -->
+    <div class="w3-row">
+      
+      <!-- Middle Column -->
+      <div class="w3-half">
+      
+        <div class="w3-row">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white w3-margin-top w3-margin-bottom">
+              <div class="w3-container w3-padding">
+                <h2 class="w3-opacity">All Storages Listed:</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <% @user.listings.each do |listing| %>
+          
+          <div class="w3-container w3-card w3-white w3-round" style="margin-top: 16px">
+            <div>
+            <h4 style="margin-top: 10px"><%= link_to "#{listing.name}", home_show_path(listing) %></h4>
+            <br>
+              <h6><b>Available Space: </b><%= listing.available_space %> Sq. Ft. </h6>
+              <h6><b>Price: $</b><%= listing.price %> / Sq. Ft.</h6>
+              <h6 style="white-space:pre;"><b>Availabile Date: </b><%= listing.start_date %> - <%= listing.end_date %></h6>
+              <h6><b>Distance from Campus: </b><%= listing.campus_dist %> Miles</h6>
+              <h6><b>Rating: </b><%= listing.rating %></h6>
+            </div>
+          
+          </div>
+          <% end %>
+      </div>
+      <!-- End Middle Column -->
+
+      <!-- Right Column -->
+      <div class="w3-rest">
+        
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white w3-margin-top w3-margin-bottom style="margin-top: 16px">
+              <div class="w3-container w3-padding">
+                <h2 class="w3-opacity">All Storages Booked:</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% @bookings.each do |booking| %>
+          <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <div>
+              <h4 style="margin-top: 10px"><%= link_to "#{Storage.find(booking.storage_id).name}", home_show_path(booking.id) %></h4>
+              <br>
+              
+              <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
+              
+              <% if booking.user_rating == nil %>
+                <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>
+                <%= f.submit "Rate", :class => "col-md-2 btn btn-primary"%> <%= f.number_field :user_rating,  min: 1,  max: 5, step: 0.1 %> 
+                <% end %>
+                <br>
+              <% else  %>
+                <h6><b>Rating Given: </b><%= booking.user_rating %>/5</h6>
+              <% end %>
+
+            </div>
+          </div>
+        <% end %>
+  
+      <!-- End Right Column -->
+</div>
+</div>

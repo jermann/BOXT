@@ -61,4 +61,13 @@ ActiveRecord::Schema.define(version: 2023_11_14_022716) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.float "booked_space"
+    t.float "user_rating"
+    t.integer "user_id"
+    t.integer "storage_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["storage_id"], name: "index_bookings_on_storage_id"
+  end
+
 end

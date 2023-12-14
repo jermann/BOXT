@@ -18,7 +18,6 @@ users.each do |user_data|
   User.create(user_data)
 end
 
-
 listings = [
   {:name => '1992 Broadway', :available_space => 600, :price => 9.19, :start_date => '10-May-2024', :end_date => '28-Aug-2024', :campus_dist => 0.1, :rating => 5},
   {:name => '600 W 122nd St', :available_space => 200, :price => 3.29, :start_date => '31-May-2024', :end_date => '28-Jul-2024', :campus_dist => 1.2, :rating => 3},
@@ -64,4 +63,10 @@ listings = [
     filename: 'img6.png'
   )
 
+bookings =[
+  { :booked_space => 10, :user_rating => 2, :user_id => 1, :storage_id => 1}
+]
 
+bookings.each do |b_data|
+  Booking.create(b_data)
+end
