@@ -48,6 +48,9 @@ describe 'update storage' do
     expect(response).to redirect_to('/')
     expect(flash[:notice]).to include('20 sq ft. booked in storage')
     expect(@s1.reload.available_space).to eq(50)
+
+    booking = Booking.last
+    expect(booking.user_id).to eq(@u2.id)
   end
 
   it 'updates any storage info as owner' do
