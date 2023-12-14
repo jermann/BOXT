@@ -79,6 +79,7 @@
               <br>
               
               <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
+              <h6><b>Net Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> Sq. Ft. </h6>
               
               <% if booking.user_rating == nil %>
                 <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>
