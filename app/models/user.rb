@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
       self.bookings = []
     end
 
-    self.update_attribute(:bookings, self.bookings.push({"storage_id" => id, "booked_space" => bs, "rating" => nil})) 
- 
+    self.update_attribute(:bookings, self.bookings.push({"storage_id" => id, "booked_space" => bs, "rating" => nil}))
   end
 
 end
