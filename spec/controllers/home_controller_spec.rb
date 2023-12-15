@@ -14,7 +14,7 @@ end
 
 describe 'create storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter1@example.com', password: 'wizard123')
     @u1 = u1
     sign_in @u1
   end
@@ -34,8 +34,8 @@ end
 
 describe 'update storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter2@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger2@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
@@ -48,6 +48,9 @@ describe 'update storage' do
     expect(response).to redirect_to('/')
     expect(flash[:notice]).to include('20 sq ft. booked in storage')
     expect(@s1.reload.available_space).to eq(50)
+
+    booking = Booking.last
+    expect(booking.user_id).to eq(@u2.id)
   end
 
   it 'updates any storage info as owner' do
@@ -69,8 +72,8 @@ end
 
 describe 'delete storage' do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter3@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger3@example.com', password: 'libraryGirl')
     @u1 = u1
     @u2 = u2
     sign_in @u1
@@ -131,8 +134,8 @@ end
 
 describe "authorize user" do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter4@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger4@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
@@ -156,8 +159,8 @@ end
 
 describe "edit listing" do
   before(:each) do
-    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter@example.com', password: 'wizard123')
-    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger@example.com', password: 'libraryGirl')
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter5@example.com', password: 'wizard123')
+    u2 = User.create!(name: 'Hermione Granger', email: 'hermione.granger5@example.com', password: 'libraryGirl')
     s1 = Storage.create!(name: 'Storage C', available_space: 70, price: 10, campus_dist: 0.9, rating: 2.3, start_date: '10-May-2024', end_date: '10-Aug-2024', user: u1)
     @u1 = u1
     @u2 = u2
@@ -184,6 +187,16 @@ describe 'filter conditions' do
     get :index, params: { min_available_space: 50, max_price_per_sqft: 7, max_distance_from_campus: 1 }
     @storages_list = Storage.all
     expect(response.body).not_to include(@s2.name)
+  end
+end
+
+describe 'new' do
+  it 'should clear sort and filter session' do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter6@example.com', password: 'wizard123')
+    sign_in u1
+    session[:min_available_space] = 40
+    get :new, session: {user_id: u1.id}
+    expect(session[:min_available_space]).to be_nil
   end
 end
 
