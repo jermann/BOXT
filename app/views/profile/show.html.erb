@@ -49,7 +49,7 @@
             <br>
               <h6><b>Available Space: </b><%= listing.available_space %> Sq. Ft. </h6>
               <h6><b>Price: $</b><%= listing.price %> / Sq. Ft.</h6>
-              <h6 style="white-space:pre;"><b>Availabile Date: </b><%= listing.start_date %> - <%= listing.end_date %></h6>
+              <h6 style="white-space:pre;"><b>Available Date: </b><%= listing.start_date %> - <%= listing.end_date %></h6>
               <h6><b>Distance from Campus: </b><%= listing.campus_dist %> Miles</h6>
               <h6><b>Rating: </b><%= listing.rating %></h6>
             </div>
@@ -76,10 +76,17 @@
           <div class="w3-container w3-card w3-white w3-round w3-margin">
             <div>
               <h4 style="margin-top: 10px"><%= link_to "#{Storage.find(booking.storage_id).name}", home_show_path(booking.id) %></h4>
-              <br>
-              
+              <div style="margin: 8px">
+                <% if Storage.find(booking.storage_id).image.attached? %>
+                  <%= image_tag Storage.find(booking.storage_id).image, height: 175, width: 175 %>
+                <% else %>
+                  <%= image_tag "default_icon.png", height: 175, width: 175 %>
+                <% end %>
+              </div>
               <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
-              <h6><b>Net Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> Sq. Ft. </h6>
+              <h6><b>Price (per Sq. Ft.): </b><%= Storage.find(booking.storage_id).price %> USD </h6>
+              <h6><b>Total Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> USD </h6>
+              <br>
               
               <% if booking.user_rating == nil %>
                 <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>
@@ -87,7 +94,7 @@
                 <% end %>
                 <br>
               <% else  %>
-                <h6><b>Rating Given: </b><%= booking.user_rating %>/5</h6>
+                <h6><b>Rating Given: </b><%= booking.user_rating %>/5.0</h6>
               <% end %>
 
             </div>
