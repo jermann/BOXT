@@ -76,32 +76,31 @@
           <div class="w3-container w3-card w3-white w3-round w3-margin">
             <div>
               <h4 style="margin-top: 10px"><%= link_to "#{Storage.find(booking.storage_id).name}", home_show_path(booking.id) %></h4>
-              <div style="margin: 8px">
-                <% if Storage.find(booking.storage_id).image.attached? %>
-                  <%= image_tag Storage.find(booking.storage_id).image, height: 175, width: 175 %>
-                <% else %>
-                  <%= image_tag "default_icon.png", height: 175, width: 175 %>
-                <% end %>
-              </div>
-              <% if Storage.find(booking.storage_id).user_id? %>
-                <h6><b>Contact: </b><%= User.find(Storage.find(booking.storage_id).user_id).email %> </h6>
-              <% else %>
-                <h6><b>Contact: </b> No Email Listed </h6>
-              <% end %>
-              <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
-              <h6><b>Price (per Sq. Ft.): </b><%= Storage.find(booking.storage_id).price %> USD </h6>
-              <h6><b>Total Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> USD </h6>
-              <br>
               
-              <% if booking.user_rating == nil %>
-                <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>
-                <%= f.submit "Rate", :class => "col-md-2 btn btn-primary"%> <%= f.number_field :user_rating,  min: 1,  max: 5, step: 0.1 %> 
-                <% end %>
-                <br>
-              <% else  %>
-                <h6><b>Rating Given: </b><%= booking.user_rating %>/5.0</h6>
-              <% end %>
+                <div style="margin: 8px">
+                  <% if Storage.find(booking.storage_id).image.attached? %>
+                    <%= image_tag Storage.find(booking.storage_id).image, height: 175, width: 175 %>
+                  <% else %>
+                    <%= image_tag "default_icon.png", height: 175, width: 175 %>
+                  <% end %>
+                </div>
 
+                <% if Storage.find(booking.storage_id).user_id? %>
+                  <h6><b>Broker Contact: </b><%= User.find(Storage.find(booking.storage_id).user_id).email %> </h6>
+                <% end %>
+                <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
+                <h6><b>Price (per Sq. Ft.): </b><%= Storage.find(booking.storage_id).price %> USD </h6>
+                <h6><b>Total Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> USD </h6>
+                <br>
+                
+                <% if booking.user_rating == nil %>
+                  <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>
+                  <%= f.submit "Rate", :class => "col-md-2 btn btn-primary"%> <%= f.number_field :user_rating,  min: 1,  max: 5, step: 0.1 %> 
+                  <% end %>
+                  <br>
+                <% else  %>
+                  <h6><b>Rating Given: </b><%= booking.user_rating %>/5.0</h6>
+                <% end %>
             </div>
           </div>
         <% end %>
