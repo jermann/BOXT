@@ -190,4 +190,14 @@ describe 'filter conditions' do
   end
 end
 
+describe 'new' do
+  it 'should clear sort and filter session' do
+    u1 = User.create!(name: 'Harry Potter', email: 'harry.potter6@example.com', password: 'wizard123')
+    sign_in u1
+    session[:min_available_space] = 40
+    get :new, session: {user_id: u1.id}
+    expect(session[:min_available_space]).to be_nil
+  end
+end
+
 end
