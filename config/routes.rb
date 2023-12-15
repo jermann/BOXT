@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :storages, only: [:show]
   resources :profile
   
+  get 'redirect_back/redirect', to: 'redirect_back#redirect', as: 'redirect_back'
+  get 'redirect_back/store_location', to: 'redirect_back#store_location', as: 'store_location'
+  
   root 'home#index'
   get 'home/new', to: 'home#new', as: 'home_new'
   post 'home/new', to: 'home#create'
