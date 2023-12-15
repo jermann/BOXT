@@ -83,6 +83,11 @@
                   <%= image_tag "default_icon.png", height: 175, width: 175 %>
                 <% end %>
               </div>
+              <% if Storage.find(booking.storage_id).user_id? %>
+                <h6><b>Contact: </b><%= User.find(Storage.find(booking.storage_id).user_id).email %> </h6>
+              <% else %>
+                <h6><b>Contact: </b> No Email Listed </h6>
+              <% end %>
               <h6><b>Space Booked: </b><%= booking.booked_space %> Sq. Ft. </h6>
               <h6><b>Price (per Sq. Ft.): </b><%= Storage.find(booking.storage_id).price %> USD </h6>
               <h6><b>Total Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> USD </h6>
