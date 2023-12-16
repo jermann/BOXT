@@ -204,3 +204,7 @@ Given('there is a storage listing with name {string}') do |storage_name|
   Storage.create(name: storage_name)
 end
 
+Given("I am on my profile page") do
+  visit "/profile/1"
+end
+

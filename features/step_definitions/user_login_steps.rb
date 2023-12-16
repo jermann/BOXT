@@ -2,6 +2,10 @@ Given("I am on the login page") do
   visit new_user_session_path
 end
 
+Given("I am on the register page") do
+  visit new_user_registration_path
+end
+
 Given("I am signed up") do
   @user = User.create!({
                          :email => "user@example.com",
@@ -24,3 +28,4 @@ end
 Then("I should be on the login page") do
   expect(current_path).to eq(new_user_session_path)
 end
+
