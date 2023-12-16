@@ -3,6 +3,15 @@ Feature: User Login
   I want to log in to my account
   So that I can access my personalized content
 
+  Scenario: Successful sign up
+    Given I am on the register page
+    When I fill in "Email" with "user@example.com"
+    And I fill in "Password" with "password"
+    And I fill in "Password confirmation" with "password"
+    And I press "Sign up"
+    Then I should be on the home page
+    And I should see "Welcome! You have signed up successfully."
+
   Scenario: Successful login
     Given I am on the login page
     Given I am signed up
