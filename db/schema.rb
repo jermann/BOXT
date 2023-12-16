@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2023_11_14_022716) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.float "booked_space"
+    t.float "user_rating"
+    t.integer "user_id"
+    t.integer "storage_id"
+    t.index ["storage_id"], name: "index_bookings_on_storage_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "storages", force: :cascade do |t|
     t.string "name"
     t.float "available_space"
@@ -59,15 +68,6 @@ ActiveRecord::Schema.define(version: 2023_11_14_022716) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.float "booked_space"
-    t.float "user_rating"
-    t.integer "user_id"
-    t.integer "storage_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-    t.index ["storage_id"], name: "index_bookings_on_storage_id"
   end
 
 end

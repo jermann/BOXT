@@ -75,7 +75,7 @@
         <% @bookings.each do |booking| %>
           <div class="w3-container w3-card w3-white w3-round w3-margin">
             <div>
-              <h4 style="margin-top: 10px"><%= link_to "#{Storage.find(booking.storage_id).name}", home_show_path(booking.id) %></h4>
+              <h4 style="margin-top: 10px"><%= link_to "#{Storage.find(booking.storage_id).name}", home_show_path(booking.storage_id) %></h4>
               
                 <div style="margin: 8px">
                   <% if Storage.find(booking.storage_id).image.attached? %>
