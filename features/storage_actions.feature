@@ -16,10 +16,9 @@ Background: Listings in database
     And I follow "Add new storage"
     Then I should see "Create New Storage"
     When I fill in "Name" with "606 W 201st Street"
-    And I fill in "Available Space (in Sq. ft.)" with "600"
+    And I fill in "Available Storage Space (in Sq. ft.)" with "600"
     And I fill in "Price per Sq. ft. (in $)" with "3.5"
     And I fill in "Distance from Campus (in Miles)" with "2"
-    And I fill in "Rating" with "4.8"
     And I fill in "Availability Start Date" with "2024-05-21"
     And I fill in "Availability End Date" with "2024-07-21"
     And I press "Save"
@@ -29,15 +28,15 @@ Background: Listings in database
     When I click on the "606 W 201st Street" link
     And I follow "Edit"
     Then I should see "Edit Existing Storage"
-    And I fill in "Rating" with "5.8"
+    And I fill in "Availability End Date" with "2024-01-21"
     And I press "Update Storage Info"
-    And I should see "Rating is not included in the list"
+    And I should see "End date must be after 2024-05-21"
 
     Given I visit the home page
     When I click on the "606 W 201st Street" link
     And I follow "Edit"
     Then I should see "Edit Existing Storage"
-    And I fill in "Rating" with "3.8"
+    And I fill in "Price per Sq. ft. (in $)" with "8"
     And I press "Update Storage Info"
     Then I should be on the home page
     And I should see "'606 W 201st Street' updated."
@@ -55,14 +54,13 @@ Background: Listings in database
     And I follow "Add new storage"
     Then I should see "Create New Storage"
     When I fill in "Name" with "621 W 201st Street"
-    And I fill in "Available Space (in Sq. ft.)" with "934"
+    And I fill in "Available Storage Space (in Sq. ft.)" with "934"
     And I fill in "Price per Sq. ft. (in $)" with "3.5"
     And I fill in "Distance from Campus (in Miles)" with "2"
-    And I fill in "Rating" with "9.8"
     And I fill in "Availability Start Date" with "2024-05-21"
-    And I fill in "Availability End Date" with "2024-07-21"
+    And I fill in "Availability End Date" with "2024-01-21"
     And I press "Save"
-    Then I should see "Create New Storage" 
+    Then I should see "End date must be after 2024-05-21"
   
   Scenario: Attempt to create new listing when not logged in
     Given I am not logged in
