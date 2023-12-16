@@ -20,3 +20,11 @@ Feature: Filter Storage Listings
     When I fill in "Max Distance to Campus" with "1.5"
     And I press "Apply Filters"
     Then I should see only storage listings with a distance from campus less than or equal to 1.5
+
+  Scenario: Remember filter parameters when redirected back
+    When I fill in "Min Available Space" with "150"
+    And I press "Apply Filters"
+    Then I should see only storage listings with available space greater than or equal to 150
+    And I click on the "Price per Sq ft" link
+    Then I should see only storage listings with available space greater than or equal to 150
+    And I should see storage listings sorted by price per sq. ft. in ascending order
