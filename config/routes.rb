@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   }
   
   resources :home
-  resources :storages, only: [:show]
+  resources :storages, only: [:show] do
+    resources :ratings, only: [:new, :create]
+  end
+
   resources :profile
   
   get 'redirect_back/redirect', to: 'redirect_back#redirect', as: 'redirect_back'

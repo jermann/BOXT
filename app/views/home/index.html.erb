@@ -68,7 +68,11 @@
             <h6><b>Available Space: </b><%= storage.available_space %> Sq Ft &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Price: $</b><%= storage.price %> / Sq. Ft.</h6>
             <h6 style="white-space:pre;"><b>Availability: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start: <%= storage.start_date %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End: <%= storage.end_date %></h6>
             <h6><b>Distance from Campus: </b><%= storage.campus_dist %> Miles</h6>
-            <h6><b>Rating: </b><%= storage.rating %></h6>
+            <% if storage.ratings.any? %>
+              <h6><b>Rating: </b><%= storage.ratings.average(:value).round(2) %></h6>
+            <% else %>
+              <h6><b>Rating: </b>No ratings yet</h6>
+            <% end %>
           </div>
         </div>
       <% end %>

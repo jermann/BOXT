@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_14_022716) do
+ActiveRecord::Schema.define(version: 2023_12_15_213415) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2023_11_14_022716) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "storage_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["storage_id"], name: "index_ratings_on_storage_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "storages", force: :cascade do |t|
@@ -59,15 +69,6 @@ ActiveRecord::Schema.define(version: 2023_11_14_022716) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.float "booked_space"
-    t.float "user_rating"
-    t.integer "user_id"
-    t.integer "storage_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-    t.index ["storage_id"], name: "index_bookings_on_storage_id"
   end
 
 end

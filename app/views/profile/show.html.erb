@@ -92,6 +92,39 @@
               <h6><b>Price (per Sq. Ft.): </b><%= Storage.find(booking.storage_id).price %> USD </h6>
               <h6><b>Total Cost: </b><%= (Storage.find(booking.storage_id).price * booking.booked_space).round(2)  %> USD </h6>
               <br>
+
+
+
+
+              <% if current_user %>
+                <% user_rating = current_user.ratings.find_by(storage_id: @storage.id) %>
+                <% if user_rating %>
+                  <p>Your Rating: <%= user_rating.value %></p>
+                <% else %>
+                  <%= form_for [@storage, Rating.new] do |f| %>
+                    <p>
+                      <%= f.label :value %><br>
+                      <%= f.select :value, (1..5).to_a %>
+                    </p>
+                    <%= f.submit "Submit Rating" %>
+                <% end %>
+              <% end %>
+
+              <% if current_user %>
+                <%= form_for [@storage, Rating.new] do |f| %>
+                  <p>
+                    <%= f.label :value %><br>
+                    <%= f.select :value, (1..5).to_a %>
+                  </p>
+                  <%= f.submit "Submit Rating" %>
+                <% end %>
+              <% else %>
+                <p>Login to submit a rating.</p>
+              <% end %>
+
+
+
+
               
               <% if booking.user_rating == nil %>
                 <%= form_for booking, url: profile_path(booking.storage_id),  method: :patch do |f| %>

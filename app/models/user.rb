@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   attr_accessor :bookings
   attr_accessor :listings
 
+  has_many :ratings
+
   def listing()
     storages = Storage.where(user: self.id)
     self.listings = storages
