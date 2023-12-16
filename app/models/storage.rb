@@ -10,6 +10,6 @@ class Storage < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true, date: { after: :start_date}, on: [:create, :update, :edit]
   validates :price, presence: true, numericality: {:greater_than => 0}, on: [:create, :update, :edit]
-  validates_inclusion_of :rating, in: 1..5
+  # validates_inclusion_of :rating, in: 1..5
 
 end
