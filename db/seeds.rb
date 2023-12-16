@@ -19,12 +19,12 @@ users.each do |user_data|
 end
 
 listings = [
-  {:name => '1992 Broadway', :available_space => 600, :price => 9.19, :start_date => '10-May-2024', :end_date => '28-Aug-2024', :campus_dist => 0.1, :rating => 5},
-  {:name => '600 W 122nd St', :available_space => 200, :price => 3.29, :start_date => '31-May-2024', :end_date => '28-Jul-2024', :campus_dist => 1.2, :rating => 3},
-  {:name => '101 Central Park West', :available_space => 64, :price => 1.89, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3, :rating => 4.8},
-  {:name => '200 W 116th', :available_space => 630, :price => 2.00, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3, :rating => 4.8},
-  {:name => '21 E 81st', :available_space => 80, :price => 3.40, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3, :rating => 4.8},
-  {:name => '320 Manhattan Ave', :available_space => 90, :price => 7.40, :start_date => '15-May-2024', :end_date => '19-Aug-2024', :campus_dist => 1.1, :rating => 4.2},
+  {:name => '1992 Broadway', :available_space => 600, :price => 9.19, :start_date => '10-May-2024', :end_date => '28-Aug-2024', :campus_dist => 0.1, :user_id => 1},
+  {:name => '600 W 122nd St', :available_space => 200, :price => 3.29, :start_date => '31-May-2024', :end_date => '28-Jul-2024', :campus_dist => 1.2, :user_id => 2},
+  {:name => '101 Central Park West', :available_space => 64, :price => 1.89, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3},
+  {:name => '200 W 116th', :available_space => 630, :price => 2.00, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3},
+  {:name => '21 E 81st', :available_space => 80, :price => 3.40, :start_date => '21-May-2024', :end_date => '01-Aug-2024', :campus_dist => 0.3},
+  {:name => '320 Manhattan Ave', :available_space => 90, :price => 7.40, :start_date => '15-May-2024', :end_date => '19-Aug-2024', :campus_dist => 1.1},
 ]
 
   l1 = Storage.create!(listings[0])
@@ -64,7 +64,11 @@ listings = [
   )
 
 bookings =[
-  { :booked_space => 10, :user_rating => 2, :user_id => 1, :storage_id => 1}
+  { :booked_space => 10, :user_rating => 4.8, :user_id => 1, :storage_id => 1},
+  { :booked_space => 25, :user_rating => 4.1, :user_id => 2, :storage_id => 1},
+  { :booked_space => 18, :user_rating => 3.5, :user_id => 3, :storage_id => 2},
+  { :booked_space => 25, :user_rating => 4.1, :user_id => 4, :storage_id => 3},
+  { :booked_space => 18, :user_rating => 3.5, :user_id => 5, :storage_id => 2},
 ]
 
 bookings.each do |b_data|
