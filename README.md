@@ -18,7 +18,7 @@ Ruby 2.6.6
 Rails 5.2.1  
 Bundler 1.17.3  
 ##### App setup:
-git clone https://github.com/jermann/BOXT.git
+git clone https://github.com/jermann/BOXT.git  
 cd BOXT/  
 bundle update  
 bundle install --without production  
