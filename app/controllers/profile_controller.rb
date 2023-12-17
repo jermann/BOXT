@@ -26,8 +26,9 @@ class ProfileController < ApplicationController
     end
 
     new_avg_rating = sum/count
+    rounded_new_avg_rating = new_avg_rating.round(2)
 
-    @storage.update_attribute(:rating, new_avg_rating)
+    @storage.update_attribute(:rating, rounded_new_avg_rating)
 
     redirect_to profile_path(current_user)
   end
