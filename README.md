@@ -32,11 +32,11 @@ https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/
 [https://github.com/jermann/BOXT](https://github.com/jermann/BOXT)
 
 ### Features Additions from Iteration-2 to Final Launch:
-- Profiles
+- *Profiles*  
   We implemented an all new page where users can look at their profile. Here they can see the listings that they posted as well as the listings they booked. In the listings they booked they now also have the ability to rate the bookings (see next section).
-- Ratings
+- *Ratings*  
   Users now have the ability to rate the storages that they have booked. We removed the temporary solution where people were able to rate their own listings. This is no longer possible.
-- Booking Contact
+- *Booking Contact*  
   Added ability to contact host via email after booking.
-- This is on top of all the awesome features up to now...
+- *This is on top of all the awesome features up to now...*
   
