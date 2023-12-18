@@ -31,17 +31,12 @@ https://intense-retreat-06834-c7bc69983cf2.herokuapp.com/
 ### GitHub Repository Link
 [https://github.com/jermann/BOXT](https://github.com/jermann/BOXT)
 
-### App Main Features Workflow:
-- Sign-Up Requirement:  
-New users are required to sign up to access all features of the application.  
-- Login Requirement:  
-Logging in is mandatory for actions like creating, editing, deleting and booking listings.  
-- User-Specific Actions:  
-Users are restricted to editing and deleting only the listings they have created.  
-- Anonymous Access:  
-Users can browse and view all listings, sort, filter as well as view details pages, without needing to log in.  
-- Book Portion of the Listing:  
-Logged in users can book a portion of the space or the entire listing. If the user books the entire space, the storage will no longer be visible for booking as it is booked out.   
-- Data Validation:   
-Data entered while creating a new listing or editing an existing listing is validated.  
+### Features Additions from Iteration-2 to Final Launch:
+- Profiles
+  We implemented an all new page where users can look at their profile. Here they can see the listings that they posted as well as the listings they booked. In the listings they booked they now also have the ability to rate the bookings (see next section).
+- Ratings
+  Users now have the ability to rate the storages that they have booked. We removed the temporary solution where people were able to rate their own listings. This is no longer possible.
+- Booking Contact
+  Added ability to contact host via email after booking.
+- This is on top of all the awesome features up to now...
   
